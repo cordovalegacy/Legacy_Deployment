@@ -14,7 +14,6 @@ const Inventory = (props) => {
 
     const { inventoryProduct, setInventoryProduct } = props;
     const quantity = 1;
-    const theme = "Mutant";
 
     const navigate = useNavigate();
 

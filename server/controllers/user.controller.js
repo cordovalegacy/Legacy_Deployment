@@ -60,9 +60,8 @@ module.exports = {
                                         expires: new Date(Date.now() + 9000000)
                                     }
                                 ).json({
-                                    message: "Success!! !! !!",
+                                    message: "Logged In User",
                                     userLoggedIn: userRecord.username,
-                                    // userId: userRecord._id
                                 })
                             } else {
                                 res.status(400).json({ message: "Invalid Attempt" })
