@@ -61,7 +61,7 @@ const Registration = () => {
                     {errors.confirmPassword ? <span className='red'>{errors.confirmPassword.message}</span> : null}
                 </div>
                 <input id='login-form-button' type="submit" value={"Register"} />
-                <Link to={'/computers/login'}>Already have an account? Click Here</Link>
+                <Link to={'/computers/login'} className='logreg-link'>Already have an account? Click Here</Link>
             </form>
         </div>
     )

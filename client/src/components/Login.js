@@ -56,7 +56,7 @@ const Login = () => {
                     />
                 </div>
                 <input type="submit" id='login-form-button' value={"Login"} />
-                <Link to={'/computers/registration'}>Need to create an account? Click Here</Link>
+                <Link to={'/computers/registration'} className='logreg-link'>Need to create an account? Click Here</Link>
             </form>
         </div>
     )

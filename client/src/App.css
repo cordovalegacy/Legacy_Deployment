@@ -28,6 +28,15 @@
     background: url(https://images.unsplash.com/photo-1475274047050-1d0c0975c63e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2672&q=80);
   }
 
+  .logreg-link{
+    color: goldenrod;
+  }
+
+  
+  .logreg-link:hover{
+    color: darkblue;
+  }
+
   nav {
     position: fixed;
     overflow: hidden;
@@ -146,7 +155,7 @@
     cursor: pointer;
     width: fit-content;
     border: 1px solid white;
-    box-shadow: 1px 1px 5px 1px whitesmoke;
+    box-shadow: 1px 1px 5px 1px darkgoldenrod;
     border-radius: 2px;
     -webkit-text-stroke: 0.25px black;
   }
@@ -162,7 +171,7 @@
     cursor: pointer;
     width: fit-content;
     border: 1px solid red;
-    box-shadow: 1px 1px 5px 1px dodgerblue;
+    box-shadow: 1px 1px 5px 1px darkgoldenrod;
     -webkit-text-stroke: 1px gold;
     text-emphasis: gold;
     opacity: .6;
@@ -1819,8 +1828,8 @@
     background-color: goldenrod;
     cursor: pointer;
     width: fit-content;
-    border: 1px solid dodgerblue;
-    box-shadow: 0px 0px 5px 0px dodgerblue;
+    border: 1px solid goldenrod;
+    box-shadow: 0px 0px 5px 0px darkgoldenrod;
     border-radius: 2px;
     -webkit-text-stroke: 0.25px black;
     border-radius: 5px;
@@ -1832,16 +1841,16 @@
   }
 
   #login-btn a:hover {
-    color: white;
+    color: black;
   }
 
   #login-btn:hover {
-    background-color: black;
+    background-color: gold;
     border-radius: 5px;
     cursor: pointer;
     width: fit-content;
-    border: 1px solid dodgerblue;
-    box-shadow: 1px 1px 5px 1px dodgerblue;
+    border: 1px solid goldenrod;
+    box-shadow: 1px 1px 5px 1px gray;
     -webkit-text-stroke: 1px gold;
     text-emphasis: gold;
     opacity: .6;
@@ -3339,4 +3348,14 @@
   }
 
   /* FOOTER SECTION END */
+
+  
+  .logreg-link{
+    color: black;
+    font-weight: 700;
+  }
+  
+  .logreg-link:hover{
+    color: darkblue;
+  }
 }

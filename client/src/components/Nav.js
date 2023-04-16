@@ -23,7 +23,7 @@ const Nav = (props) => {
             navigate('/')
             window.location.reload()
         } catch (err) { //failed logout
-            console.log("Something went wrong: ", err);
+            console.log("Something went wrong (Nav.js): ", err);
         }
     }
 
@@ -36,25 +36,20 @@ const Nav = (props) => {
             <Link to='/computers/inventory'>Inventory</Link>
             <Link to='/computers/about' id='company-link'>Company</Link>
             <Link to='/computers/faq' id='faq-link'>FAQ's</Link>
-            <div className="home-login-registration">
                 {/* ***Default*** */}
-                {!isOpen ? <button className='account-btn' onClick={handleOpen}>Account</button> : null}  {/*default account button*/}
-                {/* ***If Menu Opened*** */}
-                {isOpen ? (
-                    <div className='menu-spacer'>
-                        {/* ACCOUNT MENU AFTER DEFAULT ACCOUNT BUTTON IS CLICKED */}
-                        <div className='menu'>
-                            {isOpen ? <div id='display-name'>{displayName}</div> : null}
-                            <Link to='/computers/profile/:username' id='profile-mobile-link'>Profile</Link>
-                            {displayName === "" ? <button id="login-btn"><Link to={'/computers/login'}>Login</Link></button> : <button id='logout-btn' onClick={logout}>Logout</button>}
-                            <button id='account-close-btn' onClick={handleClose}>Close</button>
-                        </div>
+                {displayName !== "" ?
+                    <div className="home-login-registration">
+                        <button id='logout-btn' onClick={logout}>Logout</button>
+                        <h5 id='display-name'>{displayName}</h5>
                     </div>
-                ) : null}
-                {/* ****** */}
-                {!isOpen ? <div id='display-name'>{displayName}</div> : null}
+                    : null}
+                {displayName === "" ?
+                    <div className="home-login-registration">
+                        <button id="login-btn"><Link to={'/computers/login'}>Login</Link></button>
+                        <h5 id='display-name'>{displayName}</h5>
+                    </div>
+                    : null}
                 <Link to='/computers/cart'><img id='cart' src={CartIcon} alt='cart' /></Link>
-            </div>
         </nav>
     )
 }
