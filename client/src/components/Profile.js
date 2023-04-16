@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from 'axios';
 
-const Profile = (props) => {
+const Profile = () => {
 
     const [user, setUser] = useState({});
     const [orders, setOrders] = useState({});
@@ -9,9 +9,6 @@ const Profile = (props) => {
     const [isOpenAccount, setIsOpenAccount] = useState(true);
     const [isOpenQuotes, setIsOpenQuotes] = useState(false);
     const [isOpenOrders, setIsOpenOrders] = useState(false);
-
-    const quotesArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    const orderArray = [0, 1, 2, 3, 4, 5];
 
     const handleOpenAccount = () => {
         setIsOpenAccount(!isOpenAccount)
@@ -89,14 +86,6 @@ const Profile = (props) => {
                         <ul className="account-content-wrapper">
                             <h3>Your Quotes</h3>
                             <li className="account-content">Nothing to display</li>
-                            {/* {
-                                quotes ? quotes.map((quote, index) => {
-                                        <ol key={quote[0]} className="cart-column-3">
-                                            <li id="cart-list">{quote[0].theme}</li>
-                                            <li id="cart-list">{quote[0].special}</li>
-                                            <li style={{ color: "gold", textShadow: "0px 0px 10px black" }} id="cart-list">{quotes[0].createdAt}</li>
-                                        </ol>
-                                }) : <h3>Nothing to display here</h3>} */}
                         </ul>
                     ) : null}
                     {isOpenOrders ? (

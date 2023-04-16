@@ -4,7 +4,7 @@ import Company from '../img/midtier.JPG';
 import Naruto from '../img/highend.JPG';
 import Godzilla from '../img/supertier.JPG';
 import Enthusiast from '../img/enthusiast.JPG';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
 

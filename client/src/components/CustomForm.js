@@ -7,7 +7,6 @@ import emailjs from '@emailjs/browser';
 
 const CustomForm = (props) => {
 
-    const [orderList, setOrderList] = useState({});
     const [user, setUser] = useState({});
     const [fullName, setFullName] = useState("");
     const [email, setEmail] = useState("");
