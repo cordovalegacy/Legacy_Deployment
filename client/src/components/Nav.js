@@ -38,13 +38,13 @@ const Nav = (props) => {
             <Link to='/computers/faq' id='faq-link'>FAQ's</Link>
                 {/* ***Default*** */}
                 {displayName !== "" ?
-                    <div className="home-login-registration">
+                    <div className="nav-login-registration">
                         <button id='logout-btn' onClick={logout}>Logout</button>
                         <h5 id='display-name'>{displayName}</h5>
                     </div>
                     : null}
                 {displayName === "" ?
-                    <div className="home-login-registration">
+                    <div className="nav-login-registration">
                         <button id="login-btn"><Link to={'/computers/login'}>Login</Link></button>
                         <h5 id='display-name'>{displayName}</h5>
                     </div>

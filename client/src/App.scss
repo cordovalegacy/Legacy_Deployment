@@ -46,7 +46,7 @@
   font-size: $size;
 }
 
-@mixin buttons($color: black, $box: 0px 0px 3px gold, $padding: 5px, $background: gold, $width: fit-content, $radius: 5px, $cursor: pointer, $text-stroke: 0px black){
+@mixin buttons($color: black, $box: 0px 0px 3px gold, $padding: 5px, $background: gold, $width: fit-content, $radius: 5px, $cursor: pointer, $text-stroke: 0px black) {
   color: $color;
   box-shadow: $box;
   padding: $padding;
@@ -57,18 +57,43 @@
   -webkit-text-stroke: $text-stroke;
 }
 
-@mixin spins($spin1:spin 4s linear infinite, $spin2:spin 4s linear infinite, $spin3:spin 4s linear infinite){
+@mixin spins($spin1: spin 4s linear infinite, $spin2: spin 4s linear infinite, $spin3: spin 4s linear infinite) {
   -webkit-animation: $spin1;
   -moz-animation: $spin2;
   animation: $spin3;
 }
 
-@mixin flex($flex: flex, $items: center, $justify: center, $gap: 30px, $axis:row){
+@mixin flex($flex: flex, $items: center, $justify: center, $gap: 30px, $axis: row) {
   display: $flex;
   align-items: $items;
   justify-content: $justify;
   gap: $gap;
   flex-direction: $axis;
+}
+
+@mixin spacers($margin: 15% 0) {
+  margin: $margin;
+}
+
+@mixin font-impact($family: Impact, $letter: 0.2vw, $align: center) {
+  font-family: $family;
+  letter-spacing: $letter;
+  text-align: $align;
+}
+
+@mixin containers($overflow: hidden, $radius: 5px, $box: 0px 0px 5px gold, $shadow: 0px 0px 5px gold) {
+  overflow: $overflow;
+  border-radius: $radius;
+  box-shadow: $box;
+  text-shadow: $shadow;
+}
+
+@mixin containers-with-flex($overflow: hidden, $radius: 5px, $box: 0px 0px 5px gold, $shadow: 0px 0px 5px gold) {
+  @include flex(flex, center, space-evenly, 10px, row);
+  overflow: $overflow;
+  border-radius: $radius;
+  box-shadow: $box;
+  text-shadow: $shadow;
 }
 
 $full-w: 100vw;
@@ -80,6 +105,7 @@ $full-h: 100vh;
 
   //desktop screens
   body {
+    //unique
     width: $full-w;
     height: $full-h;
     overflow: inherit;
@@ -89,6 +115,7 @@ $full-h: 100vh;
   /*********************************************** GLOBAL START *************************************************/
 
   .App {
+    //unique
     @include flex(flex, space-evenly, center, 0, column);
     min-height: $full-h;
     text-align: center;
@@ -101,6 +128,7 @@ $full-h: 100vh;
   }
 
   nav {
+    //unique
     @include flex;
     width: $full-w;
     position: fixed;
@@ -111,6 +139,7 @@ $full-h: 100vh;
     margin: auto;
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(128, 128, 128, 0.4), rgba(0, 0, 0, 0.8));
   }
+
   /*********************************************** LINKS & HEADERS *************************************************/
 
 
@@ -126,11 +155,11 @@ $full-h: 100vh;
   a {
     @include links(1.1em, whitesmoke, 0px 0px 5px black, none);
   }
-  
+
   a:hover {
     @include hovers(gold, 400ms, 1);
   }
-  
+
   #login-btn a {
     @include links(1em, white, 0px 0px 3px black, none)
   }
@@ -141,6 +170,10 @@ $full-h: 100vh;
 
   h3 {
     @include headers(2em, gold, 1px white, center, 0px 0px 5px black);
+  }
+
+  h4 {
+    @include headers(1.5em, gold, 1px white, center, 0)
   }
 
   /*********************************************** IMAGES *******************************************************/
@@ -170,84 +203,89 @@ $full-h: 100vh;
     @include validations(goldenrod, 0px 0px 3px black, 1em, bold)
   }
 
+  .red {
+    @include validations(red, 0px 0px 3px black, 1em, bold)
+  }
+
+  #black {
+    @include validations(black, 0px 0px 3px gray, 1em, bold)
+  }
+
   /*********************************************** FORMS *********************************************************/
 
   label {
-    @include labels(whitesmoke, 0px 0px 3px black, 1.1em)
+    @include labels(whitesmoke, 0px 0px 3px black, 1.1em);
   }
 
   /*********************************************** BUTTONS *******************************************************/
 
   #logout-btn {
-    @include buttons(black, 0px 0px 3px red, 5px, gold, fit-content, 5px, pointer, 0)
+    @include buttons(black, 0px 0px 3px red, 5px, gold, fit-content, 5px, pointer, 0);
+    @include font-impact
   }
 
   #logout-btn:hover {
-    @include hovers(red, 100ms, 0.9)
+    @include hovers(red, 100ms, 0.9);
   }
 
   #login-btn {
-    @include buttons(black, 0px 0px 3px dodgerblue, 5px, gray, fit-content, 5px, pointer, 0)
+    @include buttons(black, 0px 0px 3px gold, 5px, gray, fit-content, 5px, pointer, 0);
+    @include font-impact
   }
 
 
   #login-btn:hover {
-    @include hovers(white, 100ms, 0.9)
+    @include hovers(white, 100ms, 0.9);
   }
 
-  /* HOME SECTION START */
+  .home-content-button,
+  #add-to-cart {
+    @include spacers(50px);
+    @include buttons(black, 2px 2px 5px black, 12px, gold, fit-content, 5px, pointer, 0);
+    height: 3em;
+    border: 1px solid gray;
+    text-align: center;
+  }
+
+  .home-content-button:hover,
+  #add-to-cart:hover {
+    @include hovers(black, 250ms, 0.8)
+  }
+
+  .home-content-button:active,
+  #add-to-cart:active {
+    background-color: black;
+    color: white;
+  }
+
+  /*********************************************** SPACERS *******************************************************/
 
   .home-main {
-    margin-top: 15%;
-    margin-bottom: 15%;
+    @include spacers;
   }
 
-  .home-login-registration {
-    display: flex;
+  .nav-login-registration {
+    @include flex(flex, center, center, 5px, row);
+    @include spacers(0 50px 0 0);
     flex: .5;
-    justify-content: flex-end;
-    align-items: center;
-    margin-right: 50px;
-    gap: 5px;
   }
 
-
-  .home-welcome {
-    color: gold;
-    margin-bottom: 50px;
-  }
-
-  .home-welcome-disclaimer {
-    color: white;
-    font-size: larger;
-    text-align: center;
-    margin-bottom: 3%;
-    text-shadow: 2px 1px 10px gold;
-    -webkit-text-stroke: 0.5px gray(255, 255, 255);
-    text-emphasis-color: gray;
-  }
+  /*********************************************** CONTAINERS ****************************************************/
 
   .home-content-container {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    text-shadow: 2px 2px 4px gray;
+    @include containers-with-flex(hidden, 10px, 2px 2px 10px darkgoldenrod, 0);
+    @include images(90%, fit-content, 50px auto);
+    padding: 20px;
     background-image: linear-gradient(to bottom, rgba(128, 128, 128, 0.5), rgba(245, 245, 245, 0.800), rgb(228, 214, 158), rgba(245, 245, 245, 0.800), rgba(128, 128, 128, 0.500));
-    height: fit-content;
-    box-shadow: 2px 2px 10px 5px darkgoldenrod;
-    border-radius: 10px;
-    margin-bottom: 50px;
-    margin-left: 175px;
-    margin-right: 175px;
-    overflow: hidden;
   }
 
-  #home-content-photo {
+  .home-content-photo {
     flex: 1;
-    overflow: hidden;
   }
 
   .home-content-gallery {
+    //unique
+    @include containers-with-flex(hidden, 10px, 0px 0px 5px black, 0);
     width: 80%;
     height: 70%;
     min-width: 200px;
@@ -255,85 +293,27 @@ $full-h: 100vh;
     max-width: 500px;
     max-height: 400px;
     border: 2px solid gray;
-    border-radius: 10px;
-    margin-top: 2%;
-    margin-bottom: 1%;
-    box-shadow: 2px 2px 15px 5px rgba(0, 0, 0, 0.75);
   }
 
-  #home-content-description {
-    display: flex;
-    flex-direction: column;
+  .home-content-description {
+    @include flex(flex, center, center, 5px, column);
+    @include containers(hidden, 10px, 2px 2px 15px rgba(0, 0, 0, 0.75), 2px 2px 4px black);
     flex: 1;
-    justify-content: center;
-    align-items: center;
     text-align: center;
-    text-shadow: 2px 2px 4px gray;
     background-image: linear-gradient(to bottom, rgba(184, 135, 11, 0.25), rgba(128, 128, 128, 0.5), rgba(184, 135, 11, 0.25));
-    box-shadow: 2px 2px 15px 5px rgba(0, 0, 0, 0.75);
-    margin: 10px;
-    width: 20%;
-    height: 20%;
-    border-radius: 10px;
   }
-
-  #home-content-button,
-  #add-to-cart {
-    justify-content: center;
-    width: 120px;
-    height: 3em;
-    background-color: gold;
-    margin-top: 25px;
-    margin-bottom: 25px;
-    border: 1px solid gray;
-    box-shadow: 2px 2px 5px 2px gray;
-    text-align: center;
-  }
-
-  #home-content-button:hover,
-  #add-to-cart:hover {
-    background-color: gold;
-    cursor: pointer;
-    transition: 500ms;
-    opacity: .6;
-    box-shadow: 2px 1px 10px 1px gold;
-  }
-
-  #home-content-button:active,
-  #add-to-cart:active {
-    background-color: black;
-    color: white;
-  }
-
-  .red {
-    color: red;
-    font-weight: bold;
-  }
-
-  #black {
-    color: black;
-    font-weight: bold;
-    font-style: italic;
-  }
-
-  /* HOME SECTION COMPLETE */
 
   /* FORM SECTION START */
 
   .custom-form-container {
-    margin-top: 15%;
-    margin-bottom: 15%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include spacers;
+    @include flex(flex, center, center, 0, row);
     min-height: 400px;
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.200), rgba(128, 128, 128, 0.682), rgba(0, 0, 0, 0.200));
   }
 
   .custom-form-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    @include flex(flex, flex-start, center, 0, column);
     text-align: left;
   }
 
