@@ -49,18 +49,18 @@ const Registration = () => {
     return (
         <div className='login-registration'>
             <form onSubmit={registrationHandler} className='login-registration-form'>
-                <h1 id='login-heading-h1'>Register</h1>
-                <div id='login-form-description'>
-                    <input onChange={changeHandler} name="username" value={user.username} type="text" placeholder="Enter username (full name)" />
+                <h3>Register</h3>
+                <div className='logreg-form-wrapper'>
+                    <input className='logreg-input' onChange={changeHandler} name="username" value={user.username} type="text" placeholder="Enter username (full name)" />
                     {errors.username ? <span className='red'>{errors.username.message}</span> : null}
-                    <input onChange={changeHandler} name="email" value={user.email} type="text" placeholder="Enter email address" />
+                    <input className='logreg-input' onChange={changeHandler} name="email" value={user.email} type="text" placeholder="Enter email address" />
                     {errors.email ? <span className='red'>{errors.email.message}</span> : null}
-                    <input onChange={changeHandler} name="password" value={user.password} type="password" placeholder="Enter Password" />
+                    <input className='logreg-input' onChange={changeHandler} name="password" value={user.password} type="password" placeholder="Enter Password" />
                     {errors.password ? <span className='red'>{errors.password.message}</span> : null}
-                    <input onChange={changeHandler} name="confirmPassword" value={user.confirmPassword} type="password" placeholder="Confirm Password" />
+                    <input className='logreg-input' onChange={changeHandler} name="confirmPassword" value={user.confirmPassword} type="password" placeholder="Confirm Password" />
                     {errors.confirmPassword ? <span className='red'>{errors.confirmPassword.message}</span> : null}
                 </div>
-                <input id='login-form-button' type="submit" value={"Register"} />
+                <input className='logreg-btn' type="submit" value={"Register"} />
                 <Link to={'/computers/login'} className='logreg-link'>Already have an account? Click Here</Link>
             </form>
         </div>

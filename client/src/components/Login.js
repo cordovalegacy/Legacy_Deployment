@@ -36,26 +36,27 @@ const Login = () => {
     return (
         <div className='login-registration'>
             <form onSubmit={loginHandler} className='login-registration-form'>
-                <h1 id='login-heading-h1'>Login</h1>
+                <h3>Login</h3>
                 {errorMessage ? <p className='red' >{errorMessage}</p> : null}
-                <div id='login-form-description'>
-                    <input name='email'
+                <div className='logreg-form-wrapper'>
+                    <input
+                        name='email'
                         value={email}
+                        className='logreg-input'
                         onChange={(e) => setEmail(e.target.value)}
                         type="text"
                         placeholder="Enter email address"
                     />
-                </div>
-                <div id='login-form-description'>
                     <input
                         name="password"
                         value={password}
+                        className='logreg-input'
                         onChange={(e) => setPassword(e.target.value)}
                         type="password"
                         placeholder="Enter Password"
                     />
                 </div>
-                <input type="submit" id='login-form-button' value={"Login"} />
+                <input type="submit" className='logreg-btn' value={"Login"} />
                 <Link to={'/computers/registration'} className='logreg-link'>Need to create an account? Click Here</Link>
             </form>
         </div>

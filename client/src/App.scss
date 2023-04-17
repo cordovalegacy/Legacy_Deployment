@@ -255,7 +255,6 @@ $full-h: 100vh;
     @include font-impact
   }
 
-
   #login-btn:hover {
     @include hovers(white, 100ms, 0.9);
   }
@@ -295,6 +294,14 @@ $full-h: 100vh;
   .custom-form-buttons:hover {
     @include hovers(black, 250ms, 0.9);
     background-color: goldenrod;
+  }
+
+  .logreg-btn{
+    @include buttons(white, 0px 0px 3px gold, 5px, black, fit-content, 5px, pointer, 0)
+  }
+
+  .logreg-btn:hover{
+    @include hovers(gold, 250ms, 0.9)
   }
 
   /*********************************************** SPACERS *******************************************************/
@@ -380,6 +387,10 @@ $full-h: 100vh;
     width: 80%;
   }
 
+  .logreg-form-wrapper{
+    @include containers-with-flex-column(none, 10px, 0, 0)
+  }
+
   .caption{
     @include spacers(5% 15% 0 0);
   }
@@ -394,8 +405,12 @@ $full-h: 100vh;
     display: inline-flex;
   }
 
-  input{
+  .form-input{
     @include inputs;
+  }
+
+  .logreg-input{
+    @include inputs(100%, 10px 15px, 10px, 0px 0px 5px gold, center, 1px solid goldenrod)
   }
 
   /* ABOUT SECTION START */

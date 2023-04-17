@@ -23,7 +23,7 @@ const CustomSchema = new mongoose.Schema({
 
     phoneNumber:
     {
-        type: Number,
+        type: String,
         required : [true, "Phone Number is required"]
     },
     
@@ -35,31 +35,31 @@ const CustomSchema = new mongoose.Schema({
     
     cpu: 
     {  
-        type: Number,
+        type: String,
         required : [true, "CPU is required"]
     },
 
     gpu:
     {  
-        type: Number,
+        type: String,
         required : [true, "GPU is required"]
     },
 
     ram:
     {  
-        type: Number,
+        type: String,
         required : [true, "RAM is required"]
     },
 
     storage:
     { 
-        type: Number,
+        type: String,
         required : [true, "Storage is required"]
     },
 
     cooling:
     {  
-        type: Number,
+        type: String,
         required : [true, "Cooling is required"]
     },
 
