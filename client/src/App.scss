@@ -233,6 +233,14 @@ $full-h: 100vh;
     @include validations(green, 0px 0px 3px black, 1em, bold)
   }
 
+  h5{
+    @include validations(white, 0px 0px 3px black, 1em, bold)
+  }
+
+  .white{
+    @include validations(gold, 0px 0px 3px black, 1em, bold)
+  }
+
   #black {
     @include validations(black, 0px 0px 3px gray, 1em, bold)
   }

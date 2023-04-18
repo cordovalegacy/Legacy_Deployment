@@ -15,7 +15,7 @@ const CustomForm = () => {
     })
     const [custom, setCustom] = useState({}) //keeps track of values selected in option tags
     const [price, setPrice] = useState({}) //keeps track of data-price attribute values in option tags
-    const [grandTotal, setGrandTotal] = useState(0) //grand total state to tally estimate
+    const [grandTotal, setGrandTotal] = useState(450) //grand total state to tally estimate
 
     const openHandler = (id) => { //handles left nav tabs opening and closing
         if (id === 'personal') { //personal tab
@@ -92,26 +92,41 @@ const CustomForm = () => {
         for (let i = 0; i < priceValues.length; i++) { //iterate through priceValues
             total += parseInt(priceValues[i]) //adds values and parses into nums
         }
-        setGrandTotal(total)
+        setGrandTotal(total + 450)
     }, [price]) //runs each time we select a new option in performance tab
 
     const navigate = useNavigate()
 
     const submitHandler = (e) => {
         e.preventDefault()
+        const payload = {
+            fullName,
+            email,
+            phoneNumber,
+            budget,
+            cpu,
+            gpu,
+            ram,
+            storage,
+            cooling,
+            theme,
+            special,
+            grandTotal
+        }
         axios
             .post('http://localhost:8000/api/computers/customs',
-                // order, <= this is the order object to send required model fields to backend
+                payload, // <= this is the object to send required model fields to backend
                 { withCredentials: true })
             .then((res) => {
                 console.log(res)
                 console.log("Posted Custom Order: ", res.data)
-                // emailjs.send('service_className', 'contact_form', order, 'LW4RMYIvhRvf0Fz9c')
-                //     .then((res) => {
-                //         console.log("Email Sent: ", res.data)
-                //     }, (err) => {
-                //         console.log(err)
-                //     })
+                emailjs.send('service_className', 'contact_form', payload, 'LW4RMYIvhRvf0Fz9c')
+                    .then((res) => {
+                        console.log("Email Sent: ", res.data)
+                    })
+                    .catch((err) => {
+                        console.log("Something went wrong: ", err)
+                    })
                 navigate("/computers/confirmation")
             })
             .catch((err) => {
@@ -135,7 +150,7 @@ const CustomForm = () => {
     }, [])
 
     return (
-        <form className='custom-form-container-outer'>
+        <form onSubmit={submitHandler} className='custom-form-container-outer'>
             <div className='form-headers'>
                 <h2>Let's Build!</h2>
                 <div className='form-popups'>
@@ -192,6 +207,7 @@ const CustomForm = () => {
                                         value={user.phoneNumber}
                                     />
                                 </div>
+                                <h5>Estimate includes $450 to account for the average cost of a case, fans, motherboard, and power supply</h5>
                             </div>
                         </>
                         : null
@@ -235,9 +251,9 @@ const CustomForm = () => {
                                             <option value="ryzen 7 7700x" data-price="500">Ryzen 7 7700x ($500)</option>
                                             <option value="ryzen 9 7900x" data-price="600">Ryzen 9 7900x ($600)</option>
                                         </select>
-                                        {custom.cpu === "ryzen 5 5600x" || custom.cpu === "ryzen 5 7600x" ? <p>Gaming</p> : null}
-                                        {custom.cpu === "ryzen 7 5800x" || custom.cpu === "ryzen 7 7700x" ? <p>Gaming & Streaming</p> : null}
-                                        {custom.cpu === "ryzen 9 7900x" ? <p>Content Creation</p> : null}
+                                        {custom.cpu === "ryzen 5 5600x" || custom.cpu === "ryzen 5 7600x" ? <p className='white'>Gaming</p> : null}
+                                        {custom.cpu === "ryzen 7 5800x" || custom.cpu === "ryzen 7 7700x" ? <p className='white'>Gaming & Streaming</p> : null}
+                                        {custom.cpu === "ryzen 9 7900x" ? <p className='white'>Content Creation</p> : null}
                                     </div>
                                     <div className='form-groups'>
                                         <label htmlFor="gpu">GPU: </label>
@@ -249,9 +265,9 @@ const CustomForm = () => {
                                             <option value="rtx 4080" data-price="1000">RTX 4080 ($1000)</option>
                                             <option value="rtx 4090" data-price="1500">RTX 4090 ($1500)</option>
                                         </select>
-                                        {custom.gpu === "rtx 3060" ? <p>Starter | Max Graphics at 1080p</p> : null}
-                                        {custom.gpu === "rtx 3080" || custom.gpu === "rtx 4070" ? <p>High End | Max Graphics at 1440p</p> : null}
-                                        {custom.gpu === "rtx 4080" || custom.gpu === "rtx 4090" ? <p>Extreme | Max Graphics at 4k</p> : null}
+                                        {custom.gpu === "rtx 3060" ? <p className='white'>Starter | Max Graphics at 1080p</p> : null}
+                                        {custom.gpu === "rtx 3080" || custom.gpu === "rtx 4070" ? <p className='white'>High End | Max Graphics at 1440p</p> : null}
+                                        {custom.gpu === "rtx 4080" || custom.gpu === "rtx 4090" ? <p className='white'>Extreme | Max Graphics at 4k</p> : null}
                                     </div>
                                     <div className='form-groups'>
                                         <label htmlFor="ram">RAM: </label>
@@ -261,9 +277,9 @@ const CustomForm = () => {
                                             <option value="32gb" data-price="150">32gb ($150)</option>
                                             <option value="64gb" data-price="250">64gb ($250)</option>
                                         </select>
-                                        {custom.ram === "16gb" ? <p>Gaming</p> : null}
-                                        {custom.ram === "32gb" ? <p>Streaming/Workstation</p> : null}
-                                        {custom.ram === "64gb" ? <p>Content Creation</p> : null}
+                                        {custom.ram === "16gb" ? <p className='white'>Gaming</p> : null}
+                                        {custom.ram === "32gb" ? <p className='white'>Streaming/Workstation</p> : null}
+                                        {custom.ram === "64gb" ? <p className='white'>Content Creation</p> : null}
                                     </div>
                                     <div className='form-groups'>
                                         <label htmlFor="storage">SSD: </label>
@@ -274,9 +290,9 @@ const CustomForm = () => {
                                             <option value="2tb" data-price="200">2tb ($200)</option>
                                             <option value="4tb" data-price="400">4tb ($400)</option>
                                         </select>
-                                        {custom.storage === "500gb" || custom.storage === "1tb" ? <p>Gaming</p> : null}
-                                        {custom.storage === "2tb" ? <p>Streaming/Workstation</p> : null}
-                                        {custom.storage === "4tb" ? <p>Content Creation</p> : null}
+                                        {custom.storage === "500gb" || custom.storage === "1tb" ? <p className='white'>Gaming</p> : null}
+                                        {custom.storage === "2tb" ? <p className='white'>Streaming/Workstation</p> : null}
+                                        {custom.storage === "4tb" ? <p className='white'>Content Creation</p> : null}
                                     </div>
                                     <div className='form-groups'>
                                         <label htmlFor="cooling">Cooling: </label>
@@ -286,9 +302,9 @@ const CustomForm = () => {
                                             <option value="liquid" data-price="150">Liquid | Standard ($150)</option>
                                             <option value="liquid w/ screen" data-price="250">Liquid | LCD Screen ($250)</option>
                                         </select>
-                                        {custom.cooling === "air" ? <p>Starter</p> : null}
-                                        {custom.cooling === "liquid" ? <p>High End</p> : null}
-                                        {custom.cooling === "liquid w/ screen" ? <p>Premium</p> : null}
+                                        {custom.cooling === "air" ? <p className='white'>Starter</p> : null}
+                                        {custom.cooling === "liquid" ? <p className='white'>High End</p> : null}
+                                        {custom.cooling === "liquid w/ screen" ? <p className='white'>Premium</p> : null}
                                     </div>
                                 </div>
                             </> :
