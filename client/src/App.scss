@@ -104,7 +104,7 @@
   text-shadow: $shadow;
 }
 
-@mixin inputs($width: 60%, $padding: 10px, $radius: 10px, $box: 1px 1px 10px goldenrod, $align: center, $border: 1px solid gold){
+@mixin inputs($width: 60%, $padding: 10px, $radius: 10px, $box: 1px 1px 10px goldenrod, $align: center, $border: 1px solid gold) {
   width: $width;
   padding: $padding;
   border-radius: $radius;
@@ -229,6 +229,10 @@ $full-h: 100vh;
     @include validations(red, 0px 0px 3px black, 1em, bold)
   }
 
+  .green {
+    @include validations(green, 0px 0px 3px black, 1em, bold)
+  }
+
   #black {
     @include validations(black, 0px 0px 3px gray, 1em, bold)
   }
@@ -285,7 +289,7 @@ $full-h: 100vh;
     border: 1px solid gray;
   }
 
-  .custom-form-buttons-open{
+  .custom-form-buttons-open {
     @include buttons(black, 0px 0px 0px gold, 15px, gold, 100%, 10px, pointer, 0);
     margin: 0 auto;
     border: 1px solid gray;
@@ -296,11 +300,11 @@ $full-h: 100vh;
     background-color: goldenrod;
   }
 
-  .logreg-btn{
+  .logreg-btn {
     @include buttons(white, 0px 0px 3px gold, 5px, black, fit-content, 5px, pointer, 0)
   }
 
-  .logreg-btn:hover{
+  .logreg-btn:hover {
     @include hovers(gold, 250ms, 0.9)
   }
 
@@ -388,36 +392,101 @@ $full-h: 100vh;
     width: 80%;
   }
 
-  .logreg-form-wrapper{
+  .logreg-form-wrapper {
     @include containers-with-flex-column(none, 10px, 0, 0)
   }
 
-  .caption{
+  .caption {
     @include spacers(5% 15% 0 0);
   }
 
-  .form-groups{
+  .form-headers{
+    @include flex(flex, center, center, 75px, row);
+  }
+
+  .form-popups{
+    @include containers-with-flex-column(none, 10px, 0, 0)
+  }
+
+  .form-groups {
     @include flex(flex, center, flex-start, 10px, row);
     @include spacers(0 0 0 20%);
     width: 100%;
   }
 
-  .form-groups-column{
+  .form-groups select {
+    width: 200px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    box-shadow: 0px 0px 10px goldenrod;
+  }
+
+  .form-groups select:focus {
+    outline: 1px solid black;
+    box-shadow: 0 0 15px gold;
+  }
+
+  .form-groups select option {
+    background-color: #000;
+    color: gold;
+  }
+
+  .form-groups-column {
     @include flex(flex, center, flex-start, 10px, column);
     @include spacers(0 0 0 5%);
     width: 100%;
   }
 
-  div.PhoneInput{
+  div.PhoneInput {
     display: inline-flex;
   }
 
-  .form-input{
+  .form-input {
     @include inputs;
   }
 
-  .logreg-input{
+  .logreg-input {
     @include inputs(100%, 10px 15px, 10px, 0px 0px 5px gold, center, 1px solid goldenrod)
+  }
+
+
+  // ************************************TABLES***********************************
+  table {
+    border-collapse: collapse;
+    margin: 20px;
+  }
+  
+  th, td {
+    padding: 10px;
+    border: 1px solid black;
+    text-align: left;
+  }
+  
+  th {
+    position: sticky;
+    top: 0;
+    background-color: gold;
+    color: black;
+    z-index: 1;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: gold;
+  }
+  
+  tbody td {
+    color: black;
+  }
+  
+  tbody td:last-child {
+    font-weight: bold;
+    position: relative;
+    z-index: 0;
   }
 
   /* ABOUT SECTION START */

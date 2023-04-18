@@ -128,6 +128,12 @@
     font-size: 1em;
     font-weight: bold;
   }
+  .green {
+    color: green;
+    text-shadow: 0px 0px 3px black;
+    font-size: 1em;
+    font-weight: bold;
+  }
   #black {
     color: black;
     text-shadow: 0px 0px 3px gray;
@@ -393,6 +399,24 @@
   .caption {
     margin: 5% 15% 0 0;
   }
+  .form-headers {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 75px;
+    flex-direction: row;
+  }
+  .form-popups {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 15px;
+    flex-direction: column;
+    overflow: none;
+    border-radius: 10px;
+    box-shadow: 0;
+    text-shadow: 0;
+  }
   .form-groups {
     display: flex;
     align-items: center;
@@ -401,6 +425,25 @@
     flex-direction: row;
     margin: 0 0 0 20%;
     width: 100%;
+  }
+  .form-groups select {
+    width: 200px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    box-shadow: 0px 0px 10px goldenrod;
+  }
+  .form-groups select:focus {
+    outline: 1px solid black;
+    box-shadow: 0 0 15px gold;
+  }
+  .form-groups select option {
+    background-color: #000;
+    color: gold;
   }
   .form-groups-column {
     display: flex;
@@ -429,6 +472,33 @@
     box-shadow: 0px 0px 5px gold;
     text-align: center;
     border: 1px solid goldenrod;
+  }
+  table {
+    border-collapse: collapse;
+    margin: 20px;
+  }
+  th, td {
+    padding: 10px;
+    border: 1px solid black;
+    text-align: left;
+  }
+  th {
+    position: sticky;
+    top: 0;
+    background-color: gold;
+    color: black;
+    z-index: 1;
+  }
+  tbody tr:nth-child(even) {
+    background-color: gold;
+  }
+  tbody td {
+    color: black;
+  }
+  tbody td:last-child {
+    font-weight: bold;
+    position: relative;
+    z-index: 0;
   }
   /* ABOUT SECTION START */
   .about-main {

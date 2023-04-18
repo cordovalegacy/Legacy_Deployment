@@ -5,18 +5,20 @@ import emailjs from '@emailjs/browser'
 
 const CustomForm = () => {
 
-    const [user, setUser] = useState({})
-    const [open, setOpen] = useState({
+    const [user, setUser] = useState({}) //inital logged in user state
+    const [open, setOpen] = useState({ //inital tab state
         personal: true,
         budget: false,
         performance: false,
         aesthetic: false,
         confirm: false
     })
-    const [custom, setCustom] = useState({})
+    const [custom, setCustom] = useState({}) //keeps track of values selected in option tags
+    const [price, setPrice] = useState({}) //keeps track of data-price attribute values in option tags
+    const [grandTotal, setGrandTotal] = useState(0) //grand total state to tally estimate
 
-    const openHandler = (id) => {
-        if (id === 'personal') {
+    const openHandler = (id) => { //handles left nav tabs opening and closing
+        if (id === 'personal') { //personal tab
             setOpen({
                 personal: true,
                 budget: false,
@@ -25,7 +27,7 @@ const CustomForm = () => {
                 confirm: false
             })
         }
-        else if (id === 'budget') {
+        else if (id === 'budget') { //budget tab
             setOpen({
                 personal: false,
                 budget: true,
@@ -34,7 +36,7 @@ const CustomForm = () => {
                 confirm: false
             })
         }
-        else if (id === 'performance') {
+        else if (id === 'performance') { //performance tab
             setOpen({
                 personal: false,
                 budget: false,
@@ -43,7 +45,7 @@ const CustomForm = () => {
                 confirm: false
             })
         }
-        else if (id === 'aesthetic') {
+        else if (id === 'aesthetic') { //aesthetic tab
             setOpen({
                 personal: false,
                 budget: false,
@@ -52,7 +54,7 @@ const CustomForm = () => {
                 confirm: false
             })
         }
-        else if (id === 'confirm') {
+        else if (id === 'confirm') { //confirm tab
             setOpen({
                 personal: false,
                 budget: false,
@@ -63,10 +65,35 @@ const CustomForm = () => {
         }
     }
 
-    const changeHandler = (e) => {
+    const changeHandler = (e) => { //watches for activity in each input, uses event object
         console.log("Event: ", e)
         setCustom({ ...custom, [e.target.name]: e.target.value })
+        if (e.target.selectedIndex === 1) { //selectedIndex is part of event object
+            setPrice({ ...price, [e.target.name]: e.target[1].dataset.price })
+        }
+        if (e.target.selectedIndex === 2) { //selectedIndex is part of event object
+            setPrice({ ...price, [e.target.name]: e.target[2].dataset.price })
+        }
+        if (e.target.selectedIndex === 3) { //selectedIndex is part of event object
+            setPrice({ ...price, [e.target.name]: e.target[3].dataset.price })
+        }
+        if (e.target.selectedIndex === 4) { //selectedIndex is part of event object
+            setPrice({ ...price, [e.target.name]: e.target[4].dataset.price })
+        }
+        if (e.target.selectedIndex === 5) { //selectedIndex is part of event object
+            setPrice({ ...price, [e.target.name]: e.target[5].dataset.price })
+        }
     }
+
+    useEffect(() => {
+        const { budget, ...theRest } = price //everything in custom state except budget
+        const priceValues = Object.values(theRest) //Object.values creates an ARRAY* of each value per key 
+        let total = 0
+        for (let i = 0; i < priceValues.length; i++) { //iterate through priceValues
+            total += parseInt(priceValues[i]) //adds values and parses into nums
+        }
+        setGrandTotal(total)
+    }, [price]) //runs each time we select a new option in performance tab
 
     const navigate = useNavigate()
 
@@ -109,8 +136,13 @@ const CustomForm = () => {
 
     return (
         <form className='custom-form-container-outer'>
-            <h2>Let's Build!</h2>
-            {custom.budget ? <h4>Your budget is:  <span className='red'>${custom.budget}</span> </h4> : null}
+            <div className='form-headers'>
+                <h2>Let's Build!</h2>
+                <div className='form-popups'>
+                    {custom.budget ? <h4>Budget: <span className='red'>${custom.budget}</span></h4> : null}
+                    {grandTotal < custom.budget ? <h4>Grand Total: <span className='green'>${grandTotal}</span></h4> : <h4>Grand Total: <span className='red'>${grandTotal}</span></h4>}
+                </div>
+            </div>
             <div className='custom-form-container-inner'>
                 <div className='custom-form-wrapper-left'>
                     {
@@ -170,6 +202,8 @@ const CustomForm = () => {
                                 <h3 className='caption'>Tell us about your budget!</h3>
                                 <div className='custom-form-input-container'>
                                     <div className='form-groups'>
+                                    </div>
+                                    <div className='form-groups'>
                                         <label htmlFor="budget">Budget: </label>
                                         <select name="budget" onChange={changeHandler}>
                                             <option disabled selected>Select</option>
@@ -188,16 +222,18 @@ const CustomForm = () => {
                         open.performance === true ? //performance tab body
                             <>
                                 <h3 className='caption'>What are your performance needs?</h3>
+                                <div className='form-groups'>
+                                </div>
                                 <div className='custom-form-input-container'>
                                     <div className='form-groups'>
                                         <label htmlFor="cpu">CPU: </label>
                                         <select name="cpu" onChange={changeHandler}>
                                             <option disabled selected>Select</option>
-                                            <option value="ryzen 5 5600x">Ryzen 5 5600x</option>
-                                            <option value="ryzen 7 5800x">Ryzen 7 5800x</option>
-                                            <option value="ryzen 5 7600x">Ryzen 5 7600x</option>
-                                            <option value="ryzen 7 7700x">Ryzen 7 7700x</option>
-                                            <option value="ryzen 9 7900x">Ryzen 9 7900x</option>
+                                            <option value="ryzen 5 5600x" data-price="200">Ryzen 5 5600x ($200)</option>
+                                            <option value="ryzen 7 5800x" data-price="300">Ryzen 7 5800x ($300)</option>
+                                            <option value="ryzen 5 7600x" data-price="300">Ryzen 5 7600x ($300)</option>
+                                            <option value="ryzen 7 7700x" data-price="500">Ryzen 7 7700x ($500)</option>
+                                            <option value="ryzen 9 7900x" data-price="600">Ryzen 9 7900x ($600)</option>
                                         </select>
                                         {custom.cpu === "ryzen 5 5600x" || custom.cpu === "ryzen 5 7600x" ? <p>Gaming</p> : null}
                                         {custom.cpu === "ryzen 7 5800x" || custom.cpu === "ryzen 7 7700x" ? <p>Gaming & Streaming</p> : null}
@@ -207,11 +243,11 @@ const CustomForm = () => {
                                         <label htmlFor="gpu">GPU: </label>
                                         <select name="gpu" onChange={changeHandler}>
                                             <option disabled selected>Select</option>
-                                            <option value="rtx 3060">RTX 3060</option>
-                                            <option value="rtx 3080">RTX 3080</option>
-                                            <option value="rtx 4070">RTX 4070</option>
-                                            <option value="rtx 4080">RRTX 4080</option>
-                                            <option value="rtx 4090">RTX 4090</option>
+                                            <option value="rtx 3060" data-price="300">RTX 3060 ($300)</option>
+                                            <option value="rtx 3080" data-price="600">RTX 3080 ($600)</option>
+                                            <option value="rtx 4070" data-price="700">RTX 4070 ($700)</option>
+                                            <option value="rtx 4080" data-price="1000">RTX 4080 ($1000)</option>
+                                            <option value="rtx 4090" data-price="1500">RTX 4090 ($1500)</option>
                                         </select>
                                         {custom.gpu === "rtx 3060" ? <p>Starter | Max Graphics at 1080p</p> : null}
                                         {custom.gpu === "rtx 3080" || custom.gpu === "rtx 4070" ? <p>High End | Max Graphics at 1440p</p> : null}
@@ -221,9 +257,9 @@ const CustomForm = () => {
                                         <label htmlFor="ram">RAM: </label>
                                         <select name="ram" onChange={changeHandler}>
                                             <option disabled selected>Select</option>
-                                            <option value="16gb">16gb</option>
-                                            <option value="32gb">32gb</option>
-                                            <option value="64gb">64gb</option>
+                                            <option value="16gb" data-price="75">16gb ($75)</option>
+                                            <option value="32gb" data-price="150">32gb ($150)</option>
+                                            <option value="64gb" data-price="250">64gb ($250)</option>
                                         </select>
                                         {custom.ram === "16gb" ? <p>Gaming</p> : null}
                                         {custom.ram === "32gb" ? <p>Streaming/Workstation</p> : null}
@@ -233,10 +269,10 @@ const CustomForm = () => {
                                         <label htmlFor="storage">SSD: </label>
                                         <select name="storage" onChange={changeHandler}>
                                             <option disabled selected>Select</option>
-                                            <option value="500gb">500gb</option>
-                                            <option value="1tb">1tb</option>
-                                            <option value="2tb">2tb</option>
-                                            <option value="4tb">4tb</option>
+                                            <option value="500gb" data-price="75">500gb ($75)</option>
+                                            <option value="1tb" data-price="125">1tb ($125)</option>
+                                            <option value="2tb" data-price="200">2tb ($200)</option>
+                                            <option value="4tb" data-price="400">4tb ($400)</option>
                                         </select>
                                         {custom.storage === "500gb" || custom.storage === "1tb" ? <p>Gaming</p> : null}
                                         {custom.storage === "2tb" ? <p>Streaming/Workstation</p> : null}
@@ -246,9 +282,9 @@ const CustomForm = () => {
                                         <label htmlFor="cooling">Cooling: </label>
                                         <select name="cooling" onChange={changeHandler}>
                                             <option disabled selected>Select</option>
-                                            <option value="air">Air</option>
-                                            <option value="liquid">Liquid | Standard</option>
-                                            <option value="liquid w/ screen">Liquid | LCD Screen</option>
+                                            <option value="air" data-price="50">Air ($50)</option>
+                                            <option value="liquid" data-price="150">Liquid | Standard ($150)</option>
+                                            <option value="liquid w/ screen" data-price="250">Liquid | LCD Screen ($250)</option>
                                         </select>
                                         {custom.cooling === "air" ? <p>Starter</p> : null}
                                         {custom.cooling === "liquid" ? <p>High End</p> : null}
@@ -286,15 +322,29 @@ const CustomForm = () => {
                     {
                         open.confirm === true ? //confirm tab body
                             <>
-                                <h3 className='caption'>Tell us about you!</h3>
+                                <h3 className='caption'>Quote</h3>
                                 <div className='custom-form-input-container'>
-                                    <div className='form-groups'>
-                                        <button type="submit">Submit Quote</button>
-                                    </div>
-                                    <div className='form-groups'>
-                                        <p>The estimate is subject to change on market</p>
-                                    </div>
-
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th scope='col'>CPU</th>
+                                                <th scope='col'>GPU</th>
+                                                <th scope='col'>RAM</th>
+                                                <th scope='col'>SSD</th>
+                                                <th scope='col'>COOLING</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>{custom.cpu}</td>
+                                                <td>{custom.gpu}</td>
+                                                <td>{custom.ram}</td>
+                                                <td>{custom.storage}</td>
+                                                <td>{custom.cooling}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <button type="submit" className="home-content-button">Submit Quote</button>
                                 </div>
                             </> :
                             null
