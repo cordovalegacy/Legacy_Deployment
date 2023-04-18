@@ -149,7 +149,7 @@ const CustomForm = () => {
                                     <input type="text" name="email" className='form-input' value={user.email} onChange={changeHandler} />
                                 </div>
                                 <div className='form-groups'>
-                                    <label htmlFor="phoneNumber">Phone: </label>
+                                    <label htmlFor="phoneNumber">Phone:</label>
                                     <input
                                         type='tel'
                                         name='phoneNumber'
@@ -187,7 +187,7 @@ const CustomForm = () => {
                     {
                         open.performance === true ? //performance tab body
                             <>
-                                <h3 className='caption'>Tell us about you!</h3>
+                                <h3 className='caption'>What are your performance needs?</h3>
                                 <div className='custom-form-input-container'>
                                     <div className='form-groups'>
                                         <label htmlFor="cpu">CPU: </label>
@@ -261,19 +261,20 @@ const CustomForm = () => {
                     {
                         open.aesthetic === true ? //aesthetic tab body
                             <>
-                                <h3 className='caption'>Tell us about you!</h3>
+                                <h3 className='caption'>Tell us about your style!</h3>
                                 <div className='custom-form-input-container'>
                                     <div className='form-groups'>
                                         <label htmlFor="theme">Theme: </label>
                                         <input type="text" name="theme" className='form-input' onChange={changeHandler} />
                                     </div>
-                                    <div className='form-groups'>
+                                    <div className='form-groups-column'>
                                         <label htmlFor="special">Special Requests: </label>
                                         <textarea
                                             type="text"
                                             name="special"
+                                            className='form-input'
                                             onChange={changeHandler}
-                                            cols={'42'}
+                                            cols={'40'}
                                             rows={'10'}
                                             placeholder='I want a motherboard that matches my theme and rgb cables'
                                         />

@@ -344,6 +344,7 @@ $full-h: 100vh;
   .home-content-description {
     @include flex(flex, center, center, 5px, column);
     @include containers(hidden, 10px, 2px 2px 15px rgba(0, 0, 0, 0.75), 2px 2px 4px black);
+    padding-top: 30px;
     flex: 1;
     text-align: center;
     background-image: linear-gradient(to bottom, rgba(184, 135, 11, 0.25), rgba(128, 128, 128, 0.5), rgba(184, 135, 11, 0.25));
@@ -383,7 +384,7 @@ $full-h: 100vh;
 
   .custom-form-input-container {
     @include containers-with-flex-column(hidden, 10px, 0, 0);
-    @include spacers(5% 15% 0 0);
+    @include spacers(7% 15% 0 0);
     width: 80%;
   }
 
@@ -398,6 +399,12 @@ $full-h: 100vh;
   .form-groups{
     @include flex(flex, center, flex-start, 10px, row);
     @include spacers(0 0 0 20%);
+    width: 100%;
+  }
+
+  .form-groups-column{
+    @include flex(flex, center, flex-start, 10px, column);
+    @include spacers(0 0 0 5%);
     width: 100%;
   }
 
