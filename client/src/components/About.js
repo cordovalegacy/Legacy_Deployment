@@ -7,6 +7,10 @@ import Dogs from '../img/dogs.jpg';
 import AboutLogo from '../img/aboutlogo.jpg';
 
 const About = () => {
+
+    //change all id's to classNames
+    //maybe redesign?
+
     return (
         <div className='about-main'>
             <h2 id='about-us-content-header'>Why Legacy Builds?</h2>

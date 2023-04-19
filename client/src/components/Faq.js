@@ -2,6 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Faq = () => {
+
+    //change all id's to classNames
+    //redesign
+
     return (
         <div className='faq-main'>
             <h2 id='faq-header-main'>Frequently Asked Question's</h2>

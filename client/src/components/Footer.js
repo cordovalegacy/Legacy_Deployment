@@ -2,6 +2,9 @@ import Insta from '../img/icons8-instagram.svg';
 import Youtube from '../img/icons8-youtube-logo.svg';
 
 const Footer = () => {
+
+    //change all id's to classNames
+
     return(
         <footer>
                     <h3>Connect with Legacy Builds LLC</h3>

@@ -6,6 +6,9 @@ import Venom from '../img/inventory.jpg';
 
 const Cart = (props) => {
 
+    //clean up
+    //fix paypal
+
     // const { orderList, setOrderList } = props;
     const { inventoryProduct, setInventoryProduct } = props;
     const [user, setUser] = useState({});

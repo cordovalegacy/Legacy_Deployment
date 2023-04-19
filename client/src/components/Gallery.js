@@ -42,6 +42,8 @@ import Witcher from '../img/witcher.jpg';
 const Gallery = () => {
 
 
+    //change all id's to classNames
+
     return (
         <div className='gallery-container'>
             <h2>Explore some of our work...</h2>

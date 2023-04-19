@@ -86,7 +86,7 @@ const CustomForm = () => {
     }
 
     useEffect(() => {
-        const { budget, ...theRest } = price //everything in custom state except budget
+        const { budget, ...theRest } = price //destructure everything from custom state except budget
         const priceValues = Object.values(theRest) //Object.values creates an ARRAY* of each value per key 
         let total = 0
         for (let i = 0; i < priceValues.length; i++) { //iterate through priceValues
@@ -100,18 +100,18 @@ const CustomForm = () => {
     const submitHandler = (e) => {
         e.preventDefault()
         const payload = {
-            fullName,
-            email,
-            phoneNumber,
-            budget,
-            cpu,
-            gpu,
-            ram,
-            storage,
-            cooling,
-            theme,
-            special,
-            grandTotal
+            fullName: custom.fullName,
+            email: custom.email,
+            phoneNumber: custom.phoneNumber,
+            budget: custom.budget,
+            cpu: custom.cpu,
+            gpu: custom.gpu,
+            ram: custom.ram,
+            storage: custom.storage,
+            cooling: custom.cooling,
+            theme: custom.theme,
+            special: custom.special,
+            grandTotal: grandTotal
         }
         axios
             .post('http://localhost:8000/api/computers/customs',

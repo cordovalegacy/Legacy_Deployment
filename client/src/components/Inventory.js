@@ -12,6 +12,9 @@ import Inventory5 from '../img/inventory5.jpeg';
 
 const Inventory = (props) => {
 
+    //clean up code
+    //redesign overhaul
+
     const { inventoryProduct, setInventoryProduct } = props;
     const quantity = 1;
 

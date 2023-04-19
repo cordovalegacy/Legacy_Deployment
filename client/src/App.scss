@@ -466,21 +466,24 @@ $full-h: 100vh;
   // ************************************TABLES***********************************
   table {
     border-collapse: collapse;
-    margin: 20px;
+    margin: 0 0 10px 0;
+    width: 100%;
+  }
+
+  thead{
+    width: 100%;
   }
   
   th, td {
+    width: 20%;
     padding: 10px;
-    border: 1px solid black;
-    text-align: left;
+    text-align: center;
   }
   
   th {
-    position: sticky;
-    top: 0;
     background-color: gold;
     color: black;
-    z-index: 1;
+    border: 1px solid gray;
   }
   
   tbody tr:nth-child(even) {
@@ -488,13 +491,8 @@ $full-h: 100vh;
   }
   
   tbody td {
-    color: black;
-  }
-  
-  tbody td:last-child {
-    font-weight: bold;
-    position: relative;
-    z-index: 0;
+    color: white;
+    height: 100%;
   }
 
   /* ABOUT SECTION START */

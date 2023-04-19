@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 
 const Confirmation = () => {
+
+    //change id's to classNames
+    //redesign
+
     return(
         <div className="confirm-container">
             <h1 id="confirm-header">Thank you for your request!</h1>

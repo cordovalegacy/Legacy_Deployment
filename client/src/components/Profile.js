@@ -3,6 +3,9 @@ import axios from 'axios';
 
 const Profile = () => {
 
+    //cleanup
+    //implement
+
     const [user, setUser] = useState({});
     const [orders, setOrders] = useState({});
     const [quotes, setQuotes] = useState({});
