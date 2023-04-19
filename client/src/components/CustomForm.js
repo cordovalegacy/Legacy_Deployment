@@ -218,8 +218,6 @@ const CustomForm = () => {
                                 <h3 className='caption'>Tell us about your budget!</h3>
                                 <div className='custom-form-input-container'>
                                     <div className='form-groups'>
-                                    </div>
-                                    <div className='form-groups'>
                                         <label htmlFor="budget">Budget: </label>
                                         <select name="budget" onChange={changeHandler}>
                                             <option disabled selected>Select</option>
@@ -238,73 +236,75 @@ const CustomForm = () => {
                         open.performance === true ? //performance tab body
                             <>
                                 <h3 className='caption'>What are your performance needs?</h3>
-                                <div className='form-groups'>
-                                </div>
-                                <div className='custom-form-input-container'>
-                                    <div className='form-groups'>
-                                        <label htmlFor="cpu">CPU: </label>
-                                        <select name="cpu" onChange={changeHandler}>
-                                            <option disabled selected>Select</option>
-                                            <option value="ryzen 5 5600x" data-price="200">Ryzen 5 5600x ($200)</option>
-                                            <option value="ryzen 7 5800x" data-price="300">Ryzen 7 5800x ($300)</option>
-                                            <option value="ryzen 5 7600x" data-price="300">Ryzen 5 7600x ($300)</option>
-                                            <option value="ryzen 7 7700x" data-price="500">Ryzen 7 7700x ($500)</option>
-                                            <option value="ryzen 9 7900x" data-price="600">Ryzen 9 7900x ($600)</option>
-                                        </select>
-                                        {custom.cpu === "ryzen 5 5600x" || custom.cpu === "ryzen 5 7600x" ? <p className='white'>Gaming</p> : null}
-                                        {custom.cpu === "ryzen 7 5800x" || custom.cpu === "ryzen 7 7700x" ? <p className='white'>Gaming & Streaming</p> : null}
-                                        {custom.cpu === "ryzen 9 7900x" ? <p className='white'>Content Creation</p> : null}
+                                <div className='custom-form-spread'>
+                                    <div className='custom-form-input-container'>
+                                        <div className='form-groups-column'>
+                                            <label htmlFor="cpu">CPU: </label>
+                                            <select name="cpu" onChange={changeHandler}>
+                                                <option disabled selected>Select</option>
+                                                <option value="ryzen 5 5600x" data-price="200">Ryzen 5 5600x ($200)</option>
+                                                <option value="ryzen 7 5800x" data-price="300">Ryzen 7 5800x ($300)</option>
+                                                <option value="ryzen 5 7600x" data-price="300">Ryzen 5 7600x ($300)</option>
+                                                <option value="ryzen 7 7700x" data-price="500">Ryzen 7 7700x ($500)</option>
+                                                <option value="ryzen 9 7900x" data-price="600">Ryzen 9 7900x ($600)</option>
+                                            </select>
+                                            {custom.cpu === "ryzen 5 5600x" || custom.cpu === "ryzen 5 7600x" ? <p className='white'>Gaming</p> : null}
+                                            {custom.cpu === "ryzen 7 5800x" || custom.cpu === "ryzen 7 7700x" ? <p className='white'>Gaming & Streaming</p> : null}
+                                            {custom.cpu === "ryzen 9 7900x" ? <p className='white'>Content Creation</p> : null}
+                                        </div>
+                                        <div className='form-groups-column'>
+                                            <label htmlFor="gpu">GPU: </label>
+                                            <select name="gpu" onChange={changeHandler}>
+                                                <option disabled selected>Select</option>
+                                                <option value="rtx 3060" data-price="300">RTX 3060 ($300)</option>
+                                                <option value="rtx 3080" data-price="600">RTX 3080 ($600)</option>
+                                                <option value="rtx 4070" data-price="700">RTX 4070 ($700)</option>
+                                                <option value="rtx 4080" data-price="1000">RTX 4080 ($1000)</option>
+                                                <option value="rtx 4090" data-price="1500">RTX 4090 ($1500)</option>
+                                            </select>
+                                            {custom.gpu === "rtx 3060" ? <p className='white'>Starter | Max Graphics at 1080p</p> : null}
+                                            {custom.gpu === "rtx 3080" || custom.gpu === "rtx 4070" ? <p className='white'>High End | Max Graphics at 1440p</p> : null}
+                                            {custom.gpu === "rtx 4080" || custom.gpu === "rtx 4090" ? <p className='white'>Extreme | Max Graphics at 4k</p> : null}
+                                        </div>
+                                        <div className='form-groups-column'>
+                                            <label htmlFor="ram">RAM: </label>
+                                            <select name="ram" onChange={changeHandler}>
+                                                <option disabled selected>Select</option>
+                                                <option value="16gb" data-price="75">16gb ($75)</option>
+                                                <option value="32gb" data-price="150">32gb ($150)</option>
+                                                <option value="64gb" data-price="250">64gb ($250)</option>
+                                            </select>
+                                            {custom.ram === "16gb" ? <p className='white'>Gaming</p> : null}
+                                            {custom.ram === "32gb" ? <p className='white'>Streaming/Workstation</p> : null}
+                                            {custom.ram === "64gb" ? <p className='white'>Content Creation</p> : null}
+                                        </div>
                                     </div>
-                                    <div className='form-groups'>
-                                        <label htmlFor="gpu">GPU: </label>
-                                        <select name="gpu" onChange={changeHandler}>
-                                            <option disabled selected>Select</option>
-                                            <option value="rtx 3060" data-price="300">RTX 3060 ($300)</option>
-                                            <option value="rtx 3080" data-price="600">RTX 3080 ($600)</option>
-                                            <option value="rtx 4070" data-price="700">RTX 4070 ($700)</option>
-                                            <option value="rtx 4080" data-price="1000">RTX 4080 ($1000)</option>
-                                            <option value="rtx 4090" data-price="1500">RTX 4090 ($1500)</option>
-                                        </select>
-                                        {custom.gpu === "rtx 3060" ? <p className='white'>Starter | Max Graphics at 1080p</p> : null}
-                                        {custom.gpu === "rtx 3080" || custom.gpu === "rtx 4070" ? <p className='white'>High End | Max Graphics at 1440p</p> : null}
-                                        {custom.gpu === "rtx 4080" || custom.gpu === "rtx 4090" ? <p className='white'>Extreme | Max Graphics at 4k</p> : null}
-                                    </div>
-                                    <div className='form-groups'>
-                                        <label htmlFor="ram">RAM: </label>
-                                        <select name="ram" onChange={changeHandler}>
-                                            <option disabled selected>Select</option>
-                                            <option value="16gb" data-price="75">16gb ($75)</option>
-                                            <option value="32gb" data-price="150">32gb ($150)</option>
-                                            <option value="64gb" data-price="250">64gb ($250)</option>
-                                        </select>
-                                        {custom.ram === "16gb" ? <p className='white'>Gaming</p> : null}
-                                        {custom.ram === "32gb" ? <p className='white'>Streaming/Workstation</p> : null}
-                                        {custom.ram === "64gb" ? <p className='white'>Content Creation</p> : null}
-                                    </div>
-                                    <div className='form-groups'>
-                                        <label htmlFor="storage">SSD: </label>
-                                        <select name="storage" onChange={changeHandler}>
-                                            <option disabled selected>Select</option>
-                                            <option value="500gb" data-price="75">500gb ($75)</option>
-                                            <option value="1tb" data-price="125">1tb ($125)</option>
-                                            <option value="2tb" data-price="200">2tb ($200)</option>
-                                            <option value="4tb" data-price="400">4tb ($400)</option>
-                                        </select>
-                                        {custom.storage === "500gb" || custom.storage === "1tb" ? <p className='white'>Gaming</p> : null}
-                                        {custom.storage === "2tb" ? <p className='white'>Streaming/Workstation</p> : null}
-                                        {custom.storage === "4tb" ? <p className='white'>Content Creation</p> : null}
-                                    </div>
-                                    <div className='form-groups'>
-                                        <label htmlFor="cooling">Cooling: </label>
-                                        <select name="cooling" onChange={changeHandler}>
-                                            <option disabled selected>Select</option>
-                                            <option value="air" data-price="50">Air ($50)</option>
-                                            <option value="liquid" data-price="150">Liquid | Standard ($150)</option>
-                                            <option value="liquid w/ screen" data-price="250">Liquid | LCD Screen ($250)</option>
-                                        </select>
-                                        {custom.cooling === "air" ? <p className='white'>Starter</p> : null}
-                                        {custom.cooling === "liquid" ? <p className='white'>High End</p> : null}
-                                        {custom.cooling === "liquid w/ screen" ? <p className='white'>Premium</p> : null}
+                                    <div className='custom-form-input-container'>
+                                        <div className='form-groups-column'>
+                                            <label htmlFor="storage">SSD: </label>
+                                            <select name="storage" onChange={changeHandler}>
+                                                <option disabled selected>Select</option>
+                                                <option value="500gb" data-price="75">500gb ($75)</option>
+                                                <option value="1tb" data-price="125">1tb ($125)</option>
+                                                <option value="2tb" data-price="200">2tb ($200)</option>
+                                                <option value="4tb" data-price="400">4tb ($400)</option>
+                                            </select>
+                                            {custom.storage === "500gb" || custom.storage === "1tb" ? <p className='white'>Gaming</p> : null}
+                                            {custom.storage === "2tb" ? <p className='white'>Streaming/Workstation</p> : null}
+                                            {custom.storage === "4tb" ? <p className='white'>Content Creation</p> : null}
+                                        </div>
+                                        <div className='form-groups-column'>
+                                            <label htmlFor="cooling">Cooling: </label>
+                                            <select name="cooling" onChange={changeHandler}>
+                                                <option disabled selected>Select</option>
+                                                <option value="air" data-price="50">Air ($50)</option>
+                                                <option value="liquid" data-price="150">Liquid | Standard ($150)</option>
+                                                <option value="liquid w/ screen" data-price="250">Liquid | LCD Screen ($250)</option>
+                                            </select>
+                                            {custom.cooling === "air" ? <p className='white'>Starter</p> : null}
+                                            {custom.cooling === "liquid" ? <p className='white'>High End</p> : null}
+                                            {custom.cooling === "liquid w/ screen" ? <p className='white'>Premium</p> : null}
+                                        </div>
                                     </div>
                                 </div>
                             </> :
@@ -338,8 +338,8 @@ const CustomForm = () => {
                     {
                         open.confirm === true ? //confirm tab body
                             <>
-                                <h3 className='caption'>Quote</h3>
                                 <div className='custom-form-input-container'>
+                                    <h3 className='caption'>Quote</h3>
                                     <table>
                                         <thead>
                                             <tr>
