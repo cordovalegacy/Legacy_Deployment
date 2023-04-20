@@ -120,7 +120,7 @@ const CustomForm = () => {
             .then((res) => {
                 console.log(res)
                 console.log("Posted Custom Order: ", res.data)
-                emailjs.send('service_className', 'contact_form', payload, 'LW4RMYIvhRvf0Fz9c')
+                emailjs.send('service_id', 'contact_form', payload, 'LW4RMYIvhRvf0Fz9c')
                     .then((res) => {
                         console.log("Email Sent: ", res.data)
                     })

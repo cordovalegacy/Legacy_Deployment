@@ -1,22 +1,18 @@
-import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import InventoryImage from '../img/inventory.jpg';
-import Inventory1 from '../img/inventory1.jpeg';
-import Inventory2 from '../img/inventory2.jpeg';
-import Inventory3 from '../img/inventory3.jpeg';
-import Inventory4 from '../img/inventory4.jpeg';
-import Inventory5 from '../img/inventory5.jpeg';
+import Inventory1 from '../img/inventory.jpg';
+import Inventory2 from '../img/inventory1.jpeg';
+import Inventory3 from '../img/inventory2.jpeg';
+import Inventory4 from '../img/inventory3.jpeg';
+import Inventory5 from '../img/inventory4.jpeg';
+import Inventory6 from '../img/inventory5.jpeg';
 
-const Inventory = (props) => {
+const Inventory = () => {
 
     //clean up code
     //redesign overhaul
-
-    const { inventoryProduct, setInventoryProduct } = props;
-    const quantity = 1;
 
     const navigate = useNavigate();
 
@@ -36,82 +32,77 @@ const Inventory = (props) => {
     }
 
     function denied() {
-        alert("Thanks for your interest! Please register an account with us and log in to add products to cart.");
+        alert("Please register an account with us and log in to add products to cart.");
         navigate("/computers/logreg");
     }
 
     const submitHandler = (e) => {
         e.preventDefault();
-
-        console.log('===product', product)
-        axios.post('http://localhost:8000/api/computers/inventory',
-            product,
-            { withCredentials: true })
-            .then((response) => {
-                console.log(response);
-                console.log(response.data);
-                setInventoryProduct([...inventoryProduct, response.data]);
+        axios
+            .post('http://localhost:8000/api/computers/inventory',
+                product,
+                { withCredentials: true })
+            .then((res) => {
+                console.log(res.data);
                 navigate("/computers/cart");
             })
             .catch((err) => {
                 console.log(err.response.data);
                 denied();
-                // alert("Thanks for your interest! Please register an account with us and log in to add products to cart.")
             });
     }
     return (
-        <div className='inventory-container-3'>
-            <h2 id='inventory-header'>Check out what we have in stock!</h2>
-            <div id='inventory-style-3'>
-                <div className='inventory-product-wrapper'>
-                    <h3 id='inventory-contact'>Mid-Tier Gaming Computer</h3>
-                    <div className='inventory-carousel'>
-                        <Carousel infiniteLoop={true} autoFocus={true} transitionTime={800} autoPlay={true} centreMode={true} useKeyboardArrows={true} emulateTouch={true} swipeable={true} labels={false}>
-                            <img id='inventory-image' src={InventoryImage} alt="product" />
-                            <img id='inventory-image' src={Inventory1} alt="product" />
-                            <img id='inventory-image' src={Inventory2} alt="product" />
-                            <img id='inventory-image' src={Inventory3} alt="product" />
-                            <img id='inventory-image' src={Inventory4} alt="product" />
-                            <img id='inventory-image' src={Inventory5} alt="product" />
-                        </Carousel>
-                        <ul className='inventory-list'>
-                            <li id='inventory-spec-list'>{product.theme}</li>
-                            <li id='inventory-spec-list'>{product.cpu}</li>
-                            <li id='inventory-spec-list'>{product.gpu}</li>
-                            <li id='inventory-spec-list'>{product.ram}</li>
-                            <li id='inventory-spec-list'>{product.storage}</li>
-                            <li id='inventory-spec-list'>{product.cooling}</li>
-                            <li id='inventory-spec-list'>{product.motherboard}</li>
-                            <li id='inventory-spec-list'>{product.psu}</li>
-                            <li id='inventory-spec-list'>{product.case}</li>
-                            <li id='inventory-spec-list'>{product.accessories}</li>
-                            <span style={{fontWeight: "bolder"}} id='error-red'>qty: {quantity}</span>
-                            <h3 style={
-                                {
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    gap: "10px",
-                                    borderRadius: "10px",
-                                    color: "greenyellow",
-                                    textShadow: "0px 0px 5px white"
-                                }
-                            }>${product.price}<button onClick={submitHandler} id='add-to-cart'>Add to cart</button></h3>
-                        </ul>
-                    </div>
+        <div className='flex flex-col py-40'>
+            <h2>Check out what we have in stock!</h2>
+            <div className='flex justify-center items-center gap-16 my-6'>
+                <div className='flex-col flex w-96 h-full my-6'>
+                    <h4>Mid-Tier Gaming Computer</h4>
+                    <Carousel
+                        className='my-6'
+                        infiniteLoop={true}
+                        autoFocus={true}
+                        transitionTime={800}
+                        autoPlay={true}
+                        centreMode={true}
+                        useKeyboardArrows={true}
+                        emulateTouch={true}
+                        swipeable={true}
+                        labels={false}
+                    >
+                        <img src={Inventory1} alt="product" />
+                        <img src={Inventory2} alt="product" />
+                        <img src={Inventory3} alt="product" />
+                        <img src={Inventory4} alt="product" />
+                        <img src={Inventory5} alt="product" />
+                        <img src={Inventory6} alt="product" />
+                    </Carousel>
                 </div>
+                <ul className='flex flex-col w-96 h-full py-6 text-amber-200 bg-amber-400 rounded-2xl'>
+                    <li className='text-stone-900'>{product.theme}</li>
+                    <li className='text-stone-900'>{product.cpu}</li>
+                    <li className='text-stone-900'>{product.gpu}</li>
+                    <li className='text-stone-900'>{product.ram}</li>
+                    <li className='text-stone-900'>{product.storage}</li>
+                    <li className='text-stone-900'>{product.cooling}</li>
+                    <li className='text-stone-900'>{product.motherboard}</li>
+                    <li className='text-stone-900'>{product.psu}</li>
+                    <li className='text-stone-900'>{product.case}</li>
+                    <li className='text-stone-900'>{product.accessories}</li>
+                    <p className='text-red-500 bg-stone-700 w-1/2 m-auto p-1 rounded-lg'>qty: {product.quantity}</p>
+                    <h5 className='my-5 text-stone-800 text-2xl'>${product.price} <button className='button bg-stone-600 text-white rounded-lg p-2' onClick={submitHandler}>Add to cart</button></h5>
+                </ul>
             </div>
             <div className='inventory-container-2'>
-                <div id='inventory-style-1'>
-                    <h3 id='inventory-disclosure'>Disclosure</h3>
-                    <p id='inventory-disclosure-info'>All systems come with an <span id='red'>inactive</span> version of Windows 10</p>
-                    <p id='inventory-disclosure-info'>All systems come with <span id='red'>Windows OS</span></p>
-                    <p id='inventory-disclosure-info'>Systems come with a 15 day moneyback guarantee <span id='red'>IF</span> computer is fully returned with no signs of user damage such as <span id='red'>liquid damage, cracked parts,</span> or <span id='red'>abuse</span>. </p>
+                <div className='inventory-style-1 bg-amber-400 rounded-2xl p-3 text-stone-800'>
+                    <h3>Disclosure</h3>
+                    <p className='inventory-disclosure-info'>All systems come with an inactive version of Windows 10</p>
+                    <p className='inventory-disclosure-info'>All systems come with Windows OS</p>
+                    <p className='inventory-disclosure-info'>Systems come with a 15 day moneyback guarantee IF computer is fully returned with no signs of user damage such as liquclassName damage, cracked parts, or abuse.</p>
                 </div>
-                <div id='inventory-style-1'>
-                    <h3 id='inventory-educate'>Not sure what you're looking at?</h3>
-                    <p id='inventory-educate-info'>CPU (computer processing unit) is like the <span id='red'>brain</span> of the computer. These are important for tasks like streaming, gaming, or content creation.</p>
-                    <p id='inventory-educate-info'>GPU (graphics processing unit) is like the <span id='red'>brawn</span> of the computer. These are important for tasks like high performance gaming, and video editing.</p>
+                <div className='inventory-style-1 bg-purple-500 rounded-2xl p-3 text-stone-800'>
+                    <h3 className='inventory-educate'>Not sure what you're looking at?</h3>
+                    <p className='inventory-educate-info'>CPU (computer processing unit) is like the brain of the computer. These are important for tasks like streaming, gaming, or content creation.</p>
+                    <p className='inventory-educate-info'>GPU (graphics processing unit) is like the brawn of the computer. These are important for tasks like high performance gaming, and vclassNameeo editing.</p>
                 </div>
             </div>
         </div>

@@ -272,7 +272,7 @@ $full-h: 100vh;
   }
 
   .home-content-button,
-  #add-to-cart {
+  .add-to-cart {
     @include spacers(50px);
     @include buttons(black, 2px 2px 5px black, 12px, gold, fit-content, 5px, pointer, 0);
     height: 3em;
@@ -281,12 +281,12 @@ $full-h: 100vh;
   }
 
   .home-content-button:hover,
-  #add-to-cart:hover {
+  .add-to-cart:hover {
     @include hovers(black, 250ms, 0.8)
   }
 
   .home-content-button:active,
-  #add-to-cart:active {
+  .add-to-cart:active {
     background-color: black;
     color: white;
   }
@@ -432,7 +432,7 @@ $full-h: 100vh;
     @include spacers(0 0 0 10%);
     width: 100%;
   }
-
+  
   .form-groups select {
     width: 200px;
     padding: 10px;
@@ -477,27 +477,27 @@ $full-h: 100vh;
     color: gold;
   }
 
-
+  
   div.PhoneInput {
     display: inline-flex;
   }
-
+  
   .form-input {
     @include inputs;
   }
-
+  
   .logreg-input {
     @include inputs(100%, 10px 15px, 10px, 0px 0px 5px gold, center, 1px solid goldenrod)
   }
 
-
+  
   // ************************************TABLES***********************************
   table {
     border-collapse: collapse;
     margin: 0 0 10px 0;
     width: 100%;
   }
-
+  
   thead{
     width: 100%;
   }
@@ -523,8 +523,30 @@ $full-h: 100vh;
     height: 100%;
   }
 
-  /* ABOUT SECTION START */
+// *********************************************REACT CAROUSEL***************************************
 
+  li.slide{
+    height: 100%;
+  }
+
+  .carousel-status{
+    text-shadow: 0 0 3px black;
+    background-color: rgba(245, 245, 245, 0.37);
+    border-radius: 0 0 0 10px;
+    box-shadow: 0 0 5px black;
+  }
+  
+    .inventory-image {
+      width: 200px;
+      height: 150px;
+      margin-bottom: 30px;
+      border-radius: 5px;
+      box-shadow: 1px 1px 10px 5px gray;
+      border: 1px solid white;
+    }
+  
+  /* ABOUT SECTION START */
+  
   .about-main {
     margin-top: 15%;
     margin-bottom: 15%;
@@ -912,7 +934,7 @@ $full-h: 100vh;
     border-radius: 5px 5px 5px;
   }
 
-  #inventory-spec-list {
+  .inventory-spec-list {
     text-align: center;
     color: darkgoldenrod;
     text-shadow: 1px 1px 10px violet;
@@ -937,38 +959,6 @@ $full-h: 100vh;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-
-  #inventory-image {
-    width: 150px;
-    height: 150px;
-    margin-bottom: 30px;
-    border-radius: 5px;
-    box-shadow: 1px 1px 10px 5px gray;
-    border: 1px solid white;
-  }
-
-  .inventory-carousel {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    width: 57em;
-    height: fit-content;
-  }
-
-  .inventory-carousel .carousel .slider-wrapper {
-    height: fit-content;
-    width: 18em;
-    padding: 1em;
-    border: 5px solid gold;
-    box-shadow: 0px 0px 10px 0px white;
-    border-radius: 30px;
-  }
-
-  .inventory-carousel .carousel .thumb {
-    height: 3.5em;
-    padding: 0;
   }
 
   /* -webkit-animation:spin 4s linear infinite;
