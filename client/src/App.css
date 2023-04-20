@@ -152,6 +152,12 @@
     font-size: 1em;
     font-weight: bold;
   }
+  .inventory-li {
+    color: black;
+    text-shadow: 0 0 5px gray;
+    font-size: 1em;
+    font-weight: normal;
+  }
   /*********************************************** FORMS *********************************************************/
   label {
     color: whitesmoke;
@@ -437,6 +443,28 @@
     box-shadow: 0;
     text-shadow: 0;
   }
+  .inventory-container-2 {
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    margin-top: 25px;
+    gap: 25px;
+    margin-left: 25px;
+    margin-right: 25px;
+  }
+  #inventory-style-1 {
+    background-color: goldenrod;
+    flex: 1;
+    height: -moz-fit-content;
+    height: fit-content;
+    max-height: -moz-max-content;
+    max-height: max-content;
+    opacity: 0.95;
+    border-radius: 5px 5px 5px;
+    margin-bottom: 50px;
+    max-width: 500px;
+  }
   .form-groups {
     display: flex;
     align-items: center;
@@ -520,7 +548,8 @@
   thead {
     width: 100%;
   }
-  th, td {
+  th,
+  td {
     width: 20%;
     padding: 10px;
     text-align: center;
@@ -818,16 +847,6 @@
   @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } } */
   /* GALLERY SECTION END */
   /* INVENTORY SECTION START */
-  .inventory-container-2 {
-    color: white;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: flex-start;
-    margin-top: 25px;
-    gap: 25px;
-    margin-left: 25px;
-    margin-right: 25px;
-  }
   #inventory-educate-info,
   #inventory-educate {
     text-shadow: 0px 0px 10px black;
@@ -873,18 +892,6 @@
     -webkit-text-emphasis-color: gold;
             text-emphasis-color: gold;
     -webkit-text-stroke: 1px purple;
-  }
-  #inventory-style-1 {
-    background-color: goldenrod;
-    flex: 1;
-    height: -moz-fit-content;
-    height: fit-content;
-    max-height: -moz-max-content;
-    max-height: max-content;
-    opacity: 0.95;
-    border-radius: 5px 5px 5px;
-    margin-bottom: 50px;
-    max-width: 500px;
   }
   #inventory-style-2 {
     border: 1px solid purple;

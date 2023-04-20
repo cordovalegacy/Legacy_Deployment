@@ -28,7 +28,7 @@ const Inventory = () => {
         case: "mATX case w/ 6 fans",
         accessories: "vertical gpu riser cable",
         price: "950",
-        quantity: "1"
+        quantity: "0"
     }
 
     function denied() {
@@ -77,19 +77,19 @@ const Inventory = () => {
                         <img src={Inventory6} alt="product" />
                     </Carousel>
                 </div>
-                <ul className='flex flex-col w-96 h-full py-6 text-amber-200 bg-amber-400 rounded-2xl'>
-                    <li className='text-stone-900'>{product.theme}</li>
-                    <li className='text-stone-900'>{product.cpu}</li>
-                    <li className='text-stone-900'>{product.gpu}</li>
-                    <li className='text-stone-900'>{product.ram}</li>
-                    <li className='text-stone-900'>{product.storage}</li>
-                    <li className='text-stone-900'>{product.cooling}</li>
-                    <li className='text-stone-900'>{product.motherboard}</li>
-                    <li className='text-stone-900'>{product.psu}</li>
-                    <li className='text-stone-900'>{product.case}</li>
-                    <li className='text-stone-900'>{product.accessories}</li>
-                    <p className='text-red-500 bg-stone-700 w-1/2 m-auto p-1 rounded-lg'>qty: {product.quantity}</p>
-                    <h5 className='my-5 text-stone-800 text-2xl'>${product.price} <button className='button bg-stone-600 text-white rounded-lg p-2' onClick={submitHandler}>Add to cart</button></h5>
+                <ul className='flex flex-col w-96 h-full py-6 text-amber-200 bg-gradient-to-tr from-stone-200 via-purple-200 to-purple-500 rounded-2xl'>
+                    <li className='text-stone-900 inventory-li'>{product.theme}</li>
+                    <li className='text-stone-900 inventory-li'>{product.cpu}</li>
+                    <li className='text-stone-900 inventory-li'>{product.gpu}</li>
+                    <li className='text-stone-900 inventory-li'>{product.ram}</li>
+                    <li className='text-stone-900 inventory-li'>{product.storage}</li>
+                    <li className='text-stone-900 inventory-li'>{product.cooling}</li>
+                    <li className='text-stone-900 inventory-li'>{product.motherboard}</li>
+                    <li className='text-stone-900 inventory-li'>{product.psu}</li>
+                    <li className='text-stone-900 inventory-li'>{product.case}</li>
+                    <li className='text-stone-900 inventory-li'>{product.accessories}</li>
+                    <p className='text-white-500 bg-gradient-to-tr from-stone-300 via-stone-500 to-stone-700 w-1/2 m-auto p-1 rounded-lg'>QTY: {product.quantity}</p>
+                    <h6 className='my-5 text-stone-800 text-2xl'>${product.price} <button className='button bg-stone-600 text-white rounded-lg p-2 hover:bg-amber-400 hover:text-white' onClick={submitHandler}>Add to cart</button></h6>
                 </ul>
             </div>
             <div className='inventory-container-2'>
