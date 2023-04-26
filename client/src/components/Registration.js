@@ -22,12 +22,17 @@ const Registration = () => {
     }
 
     const registrationHandler = (e) => {
-        const newUser = {username: user.username, email: user.email, password: user.password, confirmPassword: user.confirmPassword} //passing verified data
+        const newUser = {
+            username: user.username,
+            email: user.email,
+            password: user.password,
+            confirmPassword: user.confirmPassword
+        } //passing verified data
         e.preventDefault()
         axios
             .post("http://localhost:8000/api/users/register", //posts to route and registers user upon success
-                newUser, //req.body
-                { withCredentials: true }) //requries authentication
+                newUser //req.body
+            )
             .then((res) => {
                 console.log("Registered User: ", res.data)
                 setUser({ //initial state needed to control input values and reset after sumission
@@ -36,12 +41,12 @@ const Registration = () => {
                     password: "",
                     confirmPassword: ""
                 })
-                setErrors({}) //reset
                 navigate('/computers/login')
+                setErrors({}) //reset
             })
             .catch((err) => {
                 console.log(err)
-                console.log("Failed Registration: ", err.response.data.errors)
+                console.log("Failed Registration: ", err)
                 setErrors(err.response.data.errors)
             })
     }

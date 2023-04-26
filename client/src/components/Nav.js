@@ -8,16 +8,15 @@ import { FaSpaceShuttle } from 'react-icons/fa'
 
 const Nav = (props) => {
 
-    const { isOpen, setLoggedInUser } = props
-    const { displayName, handleOpen, handleClose } = useContext(MyContext)
+    const { setLoggedInUser } = props
+    const { displayName } = useContext(MyContext)
     const navigate = useNavigate()
     console.log(displayName)
 
     const logout = async () => {
         try { //successful logout
             const res = await axios.post('http://localhost:8000/api/users/logout',
-                {}, //req.body (required)
-                { withCredentials: true }); //checks for authorization (see user routes)
+                {}) //checks for authorization (see user routes)
             console.log(res);
             console.log("Logged Out", res.data);
             setLoggedInUser({})
