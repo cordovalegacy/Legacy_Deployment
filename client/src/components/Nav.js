@@ -4,6 +4,7 @@ import Logo from '../img/lb_logo_2.jpg';
 import CartIcon from '../img/cart_icon.png';
 import { useContext } from "react";
 import { MyContext } from "../App";
+import { FaSpaceShuttle } from 'react-icons/fa'
 
 const Nav = (props) => {
 
@@ -39,7 +40,7 @@ const Nav = (props) => {
                 {/* ***Default*** */}
                 {displayName !== "" ?
                     <div className="nav-login-registration">
-                        <button id='logout-btn' onClick={logout}>Logout</button>
+                        <button className='logout-btn' onClick={logout}>Logout</button>
                         <h5 id='display-name'>{displayName}</h5>
                     </div>
                     : null}
@@ -49,7 +50,7 @@ const Nav = (props) => {
                         <h5 id='display-name'>{displayName}</h5>
                     </div>
                     : null}
-                <Link to='/computers/cart'><img id='cart' src={CartIcon} alt='cart' /></Link>
+                <Link to='/computers/cart'><FaSpaceShuttle className="w-10 h-10"/></Link>
         </nav>
     )
 }

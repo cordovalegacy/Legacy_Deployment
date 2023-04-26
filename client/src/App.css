@@ -165,7 +165,7 @@
     font-size: 1.1em;
   }
   /*********************************************** BUTTONS *******************************************************/
-  #logout-btn {
+  .logout-btn {
     color: black;
     box-shadow: 0px 0px 3px red;
     padding: 5px;
@@ -179,7 +179,7 @@
     letter-spacing: 0.2vw;
     text-align: center;
   }
-  #logout-btn:hover {
+  .logout-btn:hover {
     color: red;
     transition: 100ms;
     opacity: 0.9;
@@ -304,7 +304,7 @@
     height: -moz-fit-content;
     height: fit-content;
     margin: 50px auto;
-    padding: 20px;
+    padding: 10px;
     background-image: linear-gradient(to bottom, rgba(128, 128, 128, 0.5), rgba(245, 245, 245, 0.8), rgb(228, 214, 158), rgba(245, 245, 245, 0.8), rgba(128, 128, 128, 0.5));
   }
   .home-content-photo {
@@ -583,182 +583,11 @@
     box-shadow: 1px 1px 10px 5px gray;
     border: 1px solid white;
   }
-  /* ABOUT SECTION START */
-  .about-main {
-    margin-top: 15%;
-    margin-bottom: 15%;
-  }
-  .about-container {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    gap: 30px;
-    margin-top: 50px;
-  }
-  #about-mission {
-    font-size: 30px;
-    margin-left: 100px;
-    flex: 1.25;
+  .carousel-p {
     color: gold;
-    text-align: center;
+    font-size: x-large;
+    text-shadow: 2px 1px 5px darkgray;
   }
-  #about-reviews {
-    color: white;
-    font-size: larger;
-  }
-  #about-wrapper {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    align-items: center;
-    justify-content: left;
-    margin-right: 100px;
-  }
-  .about-container-2 {
-    color: white;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: flex-start;
-    margin-top: 25px;
-    gap: 25px;
-    margin-left: 25px;
-    margin-right: 25px;
-  }
-  #about-style-1 {
-    background-color: goldenrod;
-    flex: 1;
-    height: 200px;
-    opacity: 0.95;
-    border-radius: 5px 5px 5px;
-    margin-bottom: 50px;
-  }
-  #about-style-2 {
-    background-color: lightblue;
-    flex: 1;
-    height: 200px;
-    opacity: 0.95;
-    border-radius: 5px 5px 5px;
-  }
-  #about-headers {
-    display: flex;
-    text-align: center;
-    font-size: larger;
-    justify-content: center;
-    color: rgb(255, 255, 255);
-    -webkit-text-emphasis-color: black;
-            text-emphasis-color: black;
-    -webkit-text-stroke: 1px rgb(0, 0, 0);
-  }
-  #about-headers-2 {
-    display: flex;
-    text-align: center;
-    font-size: larger;
-    justify-content: center;
-    color: rgb(0, 0, 0);
-    -webkit-text-emphasis-color: black;
-            text-emphasis-color: black;
-    -webkit-text-stroke: 0.5px rgb(255, 255, 255);
-  }
-  .about-me-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    margin-bottom: 5%;
-  }
-  #about-me-content {
-    justify-content: space-evenly;
-    align-items: center;
-    text-shadow: 2px 2px 4px gray;
-    background-image: linear-gradient(to bottom, rgba(77, 75, 75, 0.5), rgba(245, 245, 245, 0.8), rgba(228, 214, 158, 0.503), rgba(245, 245, 245, 0.25), rgba(77, 75, 75, 0.5));
-    height: -moz-fit-content;
-    height: fit-content;
-    box-shadow: 2px 2px 10px 5px darkgoldenrod;
-    border-radius: 10px;
-    overflow: hidden;
-    flex: 1;
-    margin-right: 50px;
-    margin-left: 50px;
-    margin-bottom: 50px;
-    padding: 2%;
-  }
-  #about-us-header {
-    color: gold;
-    margin-bottom: 50px;
-    display: flex;
-    justify-content: center;
-    border-top: 1px solid gray;
-    border-bottom: 1px solid gray;
-  }
-  #about-me-content-header {
-    font-size: 50px;
-    text-shadow: 1px 2px 5px gray;
-  }
-  #about-us-content-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin-right: 20%;
-    margin-left: 20%;
-    font-size: 50px;
-    color: gold;
-    text-shadow: 1px 2px 5px white;
-    border-radius: 10px;
-    -webkit-text-stroke: 1px gray;
-    -webkit-text-emphasis-color: gold;
-            text-emphasis-color: gold;
-    text-shadow: 1px 2px 4px gray;
-  }
-  #about-me-content-paragraph {
-    font-size: 30px;
-    text-shadow: 1px 2px 5px gold;
-  }
-  #about-me-content-paragraph-2 {
-    font-size: 25px;
-    text-shadow: 1px 2px 5px gold;
-  }
-  #about-me-content-paragraph-description {
-    font-size: 20px;
-    color: white;
-    text-shadow: 1px 2px 5px gold;
-  }
-  #about-me-content-paragraph-description-header {
-    font-size: 20px;
-    color: white;
-    text-shadow: 1px 2px 5px gray;
-    -webkit-text-stroke: 1px gold;
-    -webkit-text-emphasis-color: gold;
-            text-emphasis-color: gold;
-  }
-  #about-me-photo {
-    flex: 1;
-  }
-  #about-image-long {
-    max-width: 500px;
-    max-height: 500px;
-    width: 80%;
-    height: 80%;
-    min-width: 100px;
-    min-height: 100px;
-    margin-bottom: 30px;
-    border-radius: 5px;
-    box-shadow: 1px 1px 10px 5px gray;
-    border: 1px solid white;
-  }
-  #about-image {
-    max-width: 600px;
-    max-height: 600px;
-    width: 65%;
-    height: 65%;
-    min-width: 100px;
-    min-height: 100px;
-    margin-bottom: 30px;
-    border-radius: 5px;
-    box-shadow: 1px 1px 10px 5px gray;
-    border: 1px solid white;
-  }
-  /* ABOUT SECTION END */
-  /* GALLERY SECTION START */
   .gallery-container {
     display: flex;
     flex-direction: column;
@@ -782,31 +611,15 @@
     box-shadow: 1px 1px 5px 5px gray;
     border: 1px solid gray;
   }
-  #carousel-p {
-    color: gold;
-    font-size: x-large;
-    text-shadow: 2px 1px 5px darkgray;
-  }
   .carousel .slide img {
     max-width: 300px;
     max-height: 300px;
-    width: 15%;
-    height: 15%;
+    width: 15vw;
     min-width: 100px;
     min-height: 100px;
     margin-bottom: 60px;
     border-radius: 5px;
     box-shadow: 1px 1px 10px 5px rgba(0, 0, 0, 0.75);
-  }
-  .gallery-container h2 {
-    color: gold;
-    text-align: left;
-    font-size: 50px;
-    align-self: flex-start;
-  }
-  .gallery-container h3 {
-    -webkit-text-stroke: 0.75px rgb(255, 255, 255);
-    text-shadow: 0px 0px 10px goldenrod;
   }
   .gallery-wrapper {
     margin-top: 2%;
@@ -815,104 +628,10 @@
     box-shadow: 1px 1px 10px 5px gold;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 60%;
     align-self: center;
     text-align: center;
     padding: 2%;
-    height: 60%;
-  }
-  #img-width {
-    border: 1px solid gray;
-  }
-  #gallery-examples {
-    font-size: 35px;
-    color: rgb(242, 202, 1);
-    -webkit-text-emphasis-color: rgb(242, 202, 1);
-            text-emphasis-color: rgb(242, 202, 1);
-    -webkit-text-stroke: 0.75px rgb(255, 255, 255);
-    border-bottom: 1px solid gray;
-  }
-  /* #image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 500px;
-    height: 500px;
-    -webkit-animation:spin 4s linear infinite;
-    -moz-animation:spin 4s linear infinite;
-    animation:spin 4s linear infinite;
-  }
-  @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
-  @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
-  @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } } */
-  /* GALLERY SECTION END */
-  /* INVENTORY SECTION START */
-  #inventory-educate-info,
-  #inventory-educate {
-    text-shadow: 0px 0px 10px black;
-  }
-  #inventory-disclosure-info,
-  #inventory-disclosure {
-    text-shadow: 0px 0px 10px black;
-  }
-  .inventory-container-3 {
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-top: 15%;
-    margin-bottom: 15%;
-    gap: 25px;
-    margin-left: 25px;
-    margin-right: 25px;
-  }
-  #inventory-soon {
-    font-size: 20px;
-  }
-  #inventory-contact {
-    display: flex;
-    text-align: center;
-    font-size: 25px;
-    justify-content: center;
-    color: gold;
-    text-shadow: 1px 1px 5px gold;
-    -webkit-text-emphasis-color: gold;
-            text-emphasis-color: gold;
-    -webkit-text-stroke: 1px black;
-    background-image: linear-gradient(to right, rgba(255, 217, 0, 0.35), gray, rgba(255, 217, 0, 0.35));
-  }
-  #inventory-header {
-    display: flex;
-    text-align: center;
-    font-size: 25px;
-    justify-content: center;
-    color: gold;
-    text-shadow: 1px 1px 5px gold;
-    -webkit-text-emphasis-color: gold;
-            text-emphasis-color: gold;
-    -webkit-text-stroke: 1px purple;
-  }
-  #inventory-style-2 {
-    border: 1px solid purple;
-    box-shadow: 1px 1px 10px 1px gold;
-    display: flex;
-    flex: 1;
-    height: -moz-max-content;
-    height: max-content;
-    opacity: 0.95;
-    border-radius: 5px 5px 5px;
-  }
-  #inventory-style-3 {
-    border: 1px solid purple;
-    box-shadow: 1px 1px 10px 1px gold;
-    display: flex;
-    flex: 1;
-    height: -moz-max-content;
-    height: max-content;
-    padding: 1%;
-    opacity: 0.95;
-    border-radius: 5px 5px 5px;
   }
   .inventory-spec-list {
     text-align: center;
@@ -941,86 +660,9 @@
     justify-content: center;
     align-items: center;
   }
-  /* -webkit-animation:spin 4s linear infinite;
-    -moz-animation:spin 4s linear infinite;
-    animation:spin 4s linear infinite;
-
-  @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
-  @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
-  @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } } */
-  /* INVENTORY SECTION END */
-  /* FAQ SECTION START */
-  .faq-main {
-    margin-top: 15%;
-    margin-bottom: 15%;
-  }
-  #faq-header-main {
-    display: flex;
-    text-align: center;
-    font-size: 35px;
-    justify-content: center;
-    color: gold;
-    -webkit-text-emphasis-color: gold;
-            text-emphasis-color: gold;
-    -webkit-text-stroke: 1px white;
-    align-items: center;
-  }
-  .faq-container-1 {
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    gap: 25px;
-    margin-left: 100px;
-    margin-right: 100px;
-    flex-wrap: wrap;
-  }
-  #faq-style-1 {
-    border: 1px solid gold;
-    box-shadow: 1px 1px 10px 1px violet;
-    height: -moz-max-content;
-    height: max-content;
-    width: 100%;
-    padding: 10px;
-    opacity: 0.95;
-    flex: 1;
-    border-radius: 5px 5px 5px;
-    margin-bottom: 25px;
-    overflow: wrap;
-  }
-  #faq-style-2 {
-    border: 1px solid violet;
-    box-shadow: 1px 1px 10px 1px gold;
-    height: -moz-max-content;
-    height: max-content;
-    width: 100%;
-    padding: 10px;
-    opacity: 0.95;
-    flex: 1;
-    border-radius: 5px 5px 5px;
-    margin-bottom: 25px;
-    overflow: wrap;
-  }
-  .faq-headers {
-    display: flex;
-    text-align: center;
-    font-size: larger;
-    justify-content: center;
-    color: gold;
-    -webkit-text-emphasis-color: gold;
-            text-emphasis-color: gold;
-    -webkit-text-stroke: 1px white;
-    align-items: center;
-  }
-  #computer-questions-answers {
-    color: white;
-    margin-top: 40px;
-  }
   .white {
     color: gold;
   }
-  /* FAQ SECTION END */
   /* CART SECTION START */
   .cart-container {
     display: flex;
@@ -1313,26 +955,6 @@
     max-height: -moz-fit-content;
     max-height: fit-content;
     margin-top: 15%;
-  }
-  #confirm-header {
-    font-size: 25px;
-    color: gold;
-    -webkit-text-emphasis-color: gold;
-            text-emphasis-color: gold;
-    -webkit-text-stroke: 1px white;
-  }
-  #confirm-content {
-    font-size: 25px;
-    -webkit-text-emphasis-color: gold;
-            text-emphasis-color: gold;
-    -webkit-text-stroke: 1px plum;
-  }
-  #confirm-alert {
-    font-size: 25px;
-    color: white;
-    -webkit-text-emphasis-color: gold;
-            text-emphasis-color: gold;
-    -webkit-text-stroke: 1px gold;
   }
   /* CONFIRMATION SECTION END */
   /* LOGIN REGISTRATION SECTION START */

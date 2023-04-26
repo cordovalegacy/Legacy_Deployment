@@ -2,18 +2,13 @@ const mongoose = require('mongoose')
 
 const ComputerSchema = new mongoose.Schema({
 
-    price: 
-    {  
+    price:
+    {
         type: Number
     },
 
-    Mutant: 
-    {  
-        type: String
-    },
-
-    image: 
-    {  
+    theme:
+    {
         type: String
     },
 
@@ -21,38 +16,37 @@ const ComputerSchema = new mongoose.Schema({
     {
         type: Number,
         required: true,
-        min: [1, 'Only one of this product is available'],
-        default: 1
+        min: [1, 'Out of stock']
     },
 
-    cpu: 
-    {  
+    cpu:
+    {
         type: String,
-        required : [true, "CPU is required"]
+        required: [true, "CPU is required"]
     },
 
     gpu:
-    {  
+    {
         type: String,
-        required : [true, "GPU is required"]
+        required: [true, "GPU is required"]
     },
 
     ram:
-    {  
+    {
         type: String,
-        required : [true, "RAM is required"]
+        required: [true, "RAM is required"]
     },
 
     storage:
-    { 
+    {
         type: String,
-        required : [true, "Storage is required"]
+        required: [true, "Storage is required"]
     },
 
     cooling:
-    {  
+    {
         type: String,
-        required : [true, "Cooler is required"]
+        required: [true, "Cooler is required"]
     },
 
     psu:
@@ -75,7 +69,7 @@ const ComputerSchema = new mongoose.Schema({
         type: String
     },
 
-    createdBy: 
+    createdBy:
     {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"

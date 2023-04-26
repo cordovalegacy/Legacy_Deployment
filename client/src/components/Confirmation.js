@@ -5,15 +5,15 @@ const Confirmation = () => {
     //change id's to classNames
     //redesign
 
-    return(
+    return (
         <div className="confirm-container">
-            <h1 id="confirm-header">Thank you for your request!</h1>
-            <h2 id="confirm-content">Hold tight! We will get back to you as soon as we can.</h2>
-            <h3 id="confirm-alert">You will receive an automated email if your email address is valid</h3>
-            <br/>
-            <Link to='/computers/cart'>Process the rest of your orders</Link>
-            <br/>
-            <Link to='/'>Go Home</Link>
+            <h3 className="text-amber-700">Thank you for your request.</h3>
+            <h4 className="text-purple-500">Hold tight! We will get back to you as soon as we can.</h4>
+            <h4 className="text-amber-700">You will receive an automated email if your email address is valid</h4>
+            <div className="flex flex-col p-5">
+                <Link to='/computers/cart' className="text-purple-400">Process the rest of your orders</Link>
+                <Link to='/' className="text-purple-400">Go Home</Link>
+            </div>
         </div>
     )
 }

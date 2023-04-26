@@ -5,7 +5,7 @@ import emailjs from '@emailjs/browser';
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import Gear from '../img/gear.png';
 
-const Order = (props) => {
+const Order = () => {
 
     const { id } = useParams();
     const [orderCheckout, setOrderCheckout] = useState({});
@@ -14,9 +14,9 @@ const Order = (props) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/api/computers/inventory/order/${id}`)
+        axios
+            .get(`http://localhost:8000/api/computers/inventory/order/${id}`)
             .then((res) => {
-                console.log(res.data);
                 setOrderCheckout(res.data);
             })
             .catch((err) => {
@@ -25,11 +25,11 @@ const Order = (props) => {
     }, []);
 
     useEffect(() => {
-        axios.get('http://localhost:8000/api/users',
-            { withCredentials: true }
-        )
+        axios
+            .get('http://localhost:8000/api/users',
+                { withCredentials: true }
+            )
             .then((res) => {
-                console.log(res.data);
                 setUser(res.data);
             })
             .catch((err) => {
@@ -37,44 +37,39 @@ const Order = (props) => {
             })
     }, []);
 
-    const data = { orderCheckout, user }
-
     return (
         <div className="checkout-container">
-            <div className="checkout-links">
-                <h2 style={{padding: "5px"}}>Order Details</h2>
+            <div className="flex items-center border-b-2 mb-2">
+                <h2 className="font-bold">Order Details</h2>
                 <img id="cart-gear" src={Gear} alt="gear" />
-                <Link style={{ textDecoration: "none", backgroundColor: "darkgoldenrod", padding: "5px", textAlign: "center", border: "2px solid white", borderRadius: "2px" }} to='/'>Go Back Home</Link>
-                <Link style={{ textDecoration: "none", backgroundColor: "darkgoldenrod", padding: "5px", textAlign: "center", border: "2px solid white", borderRadius: "2px" }} to='/computers/cart'>Back To Cart</Link>
-            </div>
-            <hr style={{ border: "2px solid gold", width: "90%", marginBottom: "20px" }} />
-            <div className="order-page-layout-flex">
-                <div className="checkout-content-background">
-                    <h3>{user.username}'s PC</h3>
-                    <hr style={{ border: "2px solid gold", width: "90%", marginBottom: "20px" }} />
-                    <h2 id="checkout-content">CPU: {orderCheckout.cpu}</h2>
-                    <h2 id="checkout-content">GPU: {orderCheckout.gpu}</h2>
-                    <h2 id="checkout-content">RAM: {orderCheckout.ram}</h2>
-                    <h2 id="checkout-content">Storage: {orderCheckout.storage}</h2>
-                    <h2 id="checkout-content">Cooling: {orderCheckout.cooling}</h2>
-                    <h2 id="checkout-content">Power Supply: {orderCheckout.psu}</h2>
-                    <h2 id="checkout-content">Case: {orderCheckout.case}</h2>
-                    <h2 id="checkout-content">Accessories: {orderCheckout.accessories}</h2>
+                <div className="flex gap-6">
+                    <Link to='/' className="font-bold">Go Back Home</Link>
+                    <Link to='/computers/cart' className="font-bold">Back To Cart</Link>
                 </div>
-                <div style={{flex: "1.5"}} className="checkout-content-background">
-                    <div className="breakdown-summary-container">
-                        <ul breakdown-summary-container>
-                            <h3 style={{ borderRadius: "50px", width: "50%" }}>Summary:</h3>
-                            <li style={{ fontSize: "20px", textShadow: "0px 0px 10px black" }} id="breakdown-order"> PC - ${orderCheckout.price}</li>
-                            <li style={{ fontSize: "20px", textShadow: "0px 0px 10px black" }} id="breakdown-order">Shipping - ${shipping}</li>
-                            <li style={{ fontSize: "20px", textShadow: "0px 0px 10px black" }} id="breakdown-order">Sales Tax at Checkout</li>
-                        </ul>
+            </div>
+            <div className="flex items-start gap-4">
+                <div className='flex flex-col w-96 h-full text-amber-200 bg-gradient-to-tr from-gray-500 via-gray-700 to-gray-800 rounded-lg px-5 py-10'>
+                    <h3 className="underline">{user.username}</h3>
+                    <h5 className="my-1">CPU: {orderCheckout.cpu}</h5>
+                    <h5 className="my-1">GPU: {orderCheckout.gpu}</h5>
+                    <h5 className="my-1">RAM: {orderCheckout.ram}</h5>
+                    <h5 className="my-1">Storage: {orderCheckout.storage}</h5>
+                    <h5 className="my-1">Cooling: {orderCheckout.cooling}</h5>
+                    <h5 className="my-1">Power Supply: {orderCheckout.psu}</h5>
+                    <h5 className="my-1">Case: {orderCheckout.case}</h5>
+                    <h5 className="my-1">Accessories: {orderCheckout.accessories}</h5>
+                </div>
+                <div className='flex flex-col w-96 h-full text-amber-200 bg-gradient-to-tr from-gray-500 via-gray-700 to-gray-800 rounded-lg px-5 py-10'>
+                    <div>
+                        <h3 className="underline">Summary</h3>
+                        <h5> PC - ${orderCheckout.price}</h5>
+                        <h5>Shipping - ${shipping}</h5>
+                        <h5>Sales Tax at Checkout</h5>
                     </div>
-                    <hr style={{ width: "100%", border: "2px solid gold", boxShadow: "0px 0px 10px 0px white" }} />
-                    <p style={{ textAlign: "center" }} id="breakdown-order">Subtotal: ${orderCheckout.price}</p>
-                    <h3>Grand Total: ${(orderCheckout.price + shipping)}</h3>
-                    <hr />
-                    <br />
+                    <div className="my-6">
+                        <h5>Subtotal: ${orderCheckout.price}</h5>
+                        <h5>Grand Total: ${(orderCheckout.price + shipping)}</h5>
+                    </div>
                     <PayPalScriptProvider options={{ "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID }}>
                         <PayPalButtons
                             createOrder={(data, actions) => {
@@ -82,8 +77,29 @@ const Order = (props) => {
                                     purchase_units: [
                                         {
                                             amount: {
-                                                value: "1050.00",
+                                                value: (orderCheckout.price + shipping).toString(),
+                                                currency_code: 'USD',
+                                                breakdown: {
+                                                    item_total: {
+                                                        value: orderCheckout.price.toString(),
+                                                        currency_code: 'USD',
+                                                    },
+                                                    shipping: {
+                                                        value: shipping.toString(),
+                                                        currency_code: 'USD',
+                                                    },
+                                                },
                                             },
+                                            items: [
+                                                {
+                                                    name: 'Hulk PC',
+                                                    quantity: 1,
+                                                    unit_amount: {
+                                                        value: orderCheckout.price.toString(),
+                                                        currency_code: 'USD',
+                                                    },
+                                                },
+                                            ],
                                         },
                                     ],
                                 });
@@ -91,11 +107,11 @@ const Order = (props) => {
                             onApprove={(data, actions, e) => {
                                 return actions.order.capture().then(function (details) {
                                     //this function will show a transaction success message upon purchase
-                                    alert("Transaction completed by + details.payer.name.given_name");
                                     e.preventDefault();
                                     emailjs.send('service_id', 'contact_form', orderCheckout && user.email, 'LW4RMYIvhRvf0Fz9c')
                                         .then((res) => {
                                             console.log("SUCCESS", res.data);
+                                            navigate('/computers/confirmation')
                                         }, (err) => {
                                             console.log(err);
                                         });

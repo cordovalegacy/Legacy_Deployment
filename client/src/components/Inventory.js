@@ -8,13 +8,12 @@ import Inventory3 from '../img/inventory2.jpeg';
 import Inventory4 from '../img/inventory3.jpeg';
 import Inventory5 from '../img/inventory4.jpeg';
 import Inventory6 from '../img/inventory5.jpeg';
+import { useState } from 'react';
 
 const Inventory = () => {
 
-    //clean up code
-    //redesign overhaul
-
     const navigate = useNavigate();
+    const [errors, setErrors] = useState({})
 
     const product = {
         theme: "Mutant",
@@ -27,13 +26,8 @@ const Inventory = () => {
         cooling: "Stock (air)",
         case: "mATX case w/ 6 fans",
         accessories: "vertical gpu riser cable",
-        price: "950",
-        quantity: "0"
-    }
-
-    function denied() {
-        alert("Please register an account with us and log in to add products to cart.");
-        navigate("/computers/logreg");
+        price: 950,
+        quantity: 1
     }
 
     const submitHandler = (e) => {
@@ -48,7 +42,7 @@ const Inventory = () => {
             })
             .catch((err) => {
                 console.log(err.response.data);
-                denied();
+                setErrors(err.response.data.err.errors)
             });
     }
     return (
@@ -88,7 +82,10 @@ const Inventory = () => {
                     <li className='text-stone-900 inventory-li'>{product.psu}</li>
                     <li className='text-stone-900 inventory-li'>{product.case}</li>
                     <li className='text-stone-900 inventory-li'>{product.accessories}</li>
-                    <p className='text-white-500 bg-gradient-to-tr from-stone-300 via-stone-500 to-stone-700 w-1/2 m-auto p-1 rounded-lg'>QTY: {product.quantity}</p>
+                    {errors.quantity ?
+                        <p className='red'>{errors.quantity.message}</p> :
+                        <p className='text-white-500 bg-gradient-to-tr from-stone-300 via-stone-500 to-stone-700 w-1/2 m-auto p-1 rounded-lg'>QTY: {product.quantity}</p>
+                    }
                     <h6 className='my-5 text-stone-800 text-2xl'>${product.price} <button className='button bg-stone-600 text-white rounded-lg p-2 hover:bg-amber-400 hover:text-white' onClick={submitHandler}>Add to cart</button></h6>
                 </ul>
             </div>

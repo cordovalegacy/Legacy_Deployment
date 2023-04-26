@@ -15,7 +15,7 @@ const HomePage = () => {
             <h2>Welcome to Legacy Builds</h2>
             <h4>Examples of previously built computers within their respected ranks</h4>
             <div className="home-content-container">
-                <div className="home-content-photo">
+                <div className="home-content-photo pl-10">
                     <img className="home-content-gallery" src={Zombie} alt='zombie' />
                 </div>
                 <ul className="home-content-description">
@@ -30,7 +30,7 @@ const HomePage = () => {
                 </ul>
             </div>
             <div className="home-content-container">
-                <div className="home-content-photo">
+                <div className="home-content-photo pl-10">
                     <img className="home-content-gallery" src={Company} alt='Mid-Tier' />
                 </div>
                 <ul className="home-content-description">
@@ -45,7 +45,7 @@ const HomePage = () => {
                 </ul>
             </div>
             <div className="home-content-container">
-                <div className="home-content-photo">
+                <div className="home-content-photo pl-10">
                     <img className="home-content-gallery" src={Naruto} alt='High-End' />
                 </div>
                     <ul className="home-content-description">
@@ -60,7 +60,7 @@ const HomePage = () => {
                     </ul>
             </div>
             <div className="home-content-container">
-                <div className="home-content-photo">
+                <div className="home-content-photo pl-10">
                     <img className="home-content-gallery" src={Godzilla} alt='Super-Tier' />
                 </div>
                     <ul className="home-content-description">
@@ -76,7 +76,7 @@ const HomePage = () => {
                     </ul>
             </div>
             <div className="home-content-container">
-                <div className="home-content-photo">
+                <div className="home-content-photo pl-10">
                     <img className="home-content-gallery" src={Enthusiast} alt='Enthusiast' />
                 </div>
                     <ul className="home-content-description">

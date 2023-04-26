@@ -69,7 +69,7 @@ function App() {
                         <Route path='/computers/inventory' element={<Inventory inventoryProduct={inventoryProduct} setInventoryProduct={setInventoryProduct} />} />
                         <Route path='/computers/about' element={<About />} />
                         <Route path='/computers/faq' element={<Faq />} />
-                        <Route path='/computers/cart' element={<Cart inventoryProduct={inventoryProduct} setInventoryProduct={setInventoryProduct} orderList={orderList} setOrderList={setOrderList} />} />
+                        <Route path='/computers/cart' element={<Cart />} />
                         <Route path='/computers/confirmation' element={<Confirmation />} />
                     </Routes>
                     <Footer />
