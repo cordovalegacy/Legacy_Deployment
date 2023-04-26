@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Faq = () => {
 
     return (
-        <div className='pl-10 pr-20 mt-40'>
+        <div className='px-20 mt-40'>
             <h2>Frequently Asked Question's</h2>
             <div className='flex flex-col mt-6 gap-6 justify-center'>
                 <div className='flex flex-col gap-6 flex-3 border opacity-80 border-purple-500 p-10 rounded-3xl bg-slate-700 shadow-md shadow-purple-500 text-white text-lg'>
