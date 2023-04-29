@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import emailjs from '@emailjs/browser'
+import PieChart from './PieChart'
 
-const CustomForm = () => {
+const CustomForm = ({ PriceData, options }) => {
 
     const [user, setUser] = useState({}) //inital logged in user state
     const [open, setOpen] = useState({ //inital tab state
@@ -217,8 +218,8 @@ const CustomForm = () => {
                         open.budget === true ? //budget tab body
                             <>
                                 <h3 className='caption'>Tell us about your budget!</h3>
-                                <div className='custom-form-input-container'>
-                                    <div className='form-groups'>
+                                <div className='flex w-full h-full'>
+                                    <div className='form-groups !w-2/5 !ml-2 !mb-40'>
                                         <label htmlFor="budget">Budget: </label>
                                         <select name="budget" onChange={changeHandler}>
                                             <option disabled selected>Select</option>
@@ -228,6 +229,10 @@ const CustomForm = () => {
                                             <option value="3000">$3000</option>
                                             <option value="4000">$4000+</option>
                                         </select>
+                                    </div>
+                                    <div className='flex flex-col w-2/5 gap-3 ml-10 px-10 py-4 '>
+                                        <label className='underline'>Average Build Cost %</label>
+                                        <PieChart PriceData={PriceData} options={options} />
                                     </div>
                                 </div>
                             </> :

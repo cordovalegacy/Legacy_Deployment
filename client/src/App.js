@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { useState, useEffect, createContext } from 'react'
+import { useState, useEffect, createContext, useRef } from 'react'
 import axios from 'axios'
 import './App.css'
 import HomePage from './components/Home'
@@ -16,6 +16,30 @@ import Nav from './components/Nav'
 import Footer from './components/Footer'
 import Login from './components/Login'
 import Registration from './components/Registration'
+import { Data } from './PriceData'
+import {
+    Chart as ChartJS, //chart won't work without this
+    ArcElement,
+    Tooltip,
+    Legend,
+    DoughnutController,
+    LineElement,
+    PointElement,
+    LinearScale,
+    Title
+} from "chart.js/auto";
+import 'chartjs-plugin-datalabels'
+
+ChartJS.register(
+    DoughnutController,
+    ArcElement,
+    LineElement,
+    PointElement,
+    LinearScale,
+    Title,
+    Legend
+)
+
 export const MyContext = createContext()
 
 function App() {
@@ -26,6 +50,43 @@ function App() {
     const [loggedInUser, setLoggedInUser] = useState({})
     const [isOpen, setIsOpen] = useState(false) //toggle state
     const [displayName, setDisplayName] = useState("") //initial nav display name state
+
+    const priceData = {
+        labels: ["CPU", "GPU", "RAM", "SSD", "PSU", "Motherboard", "Case", "Cooler",],
+        datasets: [
+            {
+                label: "Avg Price Ratio",
+                data: [
+                    Data[0].cpu,
+                    Data[0].gpu,
+                    Data[0].ram,
+                    Data[0].ssd,
+                    Data[0].power_supply,
+                    Data[0].motherboard,
+                    Data[0].case,
+                    Data[0].cooler
+                ],
+                backgroundColor:  ["orangered", "crimson", "dodgerblue", "purple", "violet", "royalblue", "rebeccapurple", "blue"],
+                borderColor: "black",
+                borderWidth: 2,
+                hoverOffset: 60
+            }
+        ]
+    }
+    const options = {
+        plugins: {
+            legend: {
+                display: false
+            },
+            tooltip: {
+                callbacks: {
+                    label: function (context) {
+                        return `${context.label}: ${context.formattedValue}`;
+                    }
+                }
+            }
+        },
+    };
 
     const handleOpen = () => { //toggle function
         setIsOpen(!isOpen)
@@ -65,7 +126,7 @@ function App() {
                         <Route path='/computers/login' element={<Login setLoggedInUser={setLoggedInUser} />} />
                         <Route path='/computers/registration' element={<Registration />} />
                         <Route path='/computers/gallery' element={<Gallery />} />
-                        <Route path='/computers/customs' element={<CustomForm orderList={orderList} setOrderList={setOrderList} />} />
+                        <Route path='/computers/customs' element={<CustomForm orderList={orderList} setOrderList={setOrderList} PriceData={priceData} options={options} />} />
                         <Route path='/computers/inventory' element={<Inventory inventoryProduct={inventoryProduct} setInventoryProduct={setInventoryProduct} />} />
                         <Route path='/computers/about' element={<About />} />
                         <Route path='/computers/faq' element={<Faq />} />

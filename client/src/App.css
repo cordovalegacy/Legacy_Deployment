@@ -40,6 +40,10 @@
     padding: 0;
     margin: 0;
   }
+
+  canvas {
+    cursor: pointer;
+  }
   /*********************************************** LINKS & HEADERS *************************************************/
   .logreg-link {
     font-size: 1.1em;
