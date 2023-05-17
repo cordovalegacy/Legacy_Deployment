@@ -116,7 +116,7 @@ function App() {
 
     return (
         <BrowserRouter>
-            <MyContext.Provider value={{ loggedInUser, displayName, handleOpen, handleClose }}>
+            <MyContext.Provider value={{ loggedInUser, displayName, setDisplayName, handleOpen, handleClose }}>
                 <div className="App">
                     <Nav isOpen={isOpen} setLoggedInUser={setLoggedInUser} />
                     <Routes>

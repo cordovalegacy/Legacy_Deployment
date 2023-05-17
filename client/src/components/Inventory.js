@@ -46,13 +46,13 @@ const Inventory = () => {
             });
     }
     return (
-        <div className='flex flex-col py-40'>
-            <h2>Check out what we have in stock!</h2>
-            <div className='flex justify-center items-center gap-16 my-6'>
-                <div className='flex-col flex w-96 h-full my-6'>
-                    <h4>Mid-Tier Gaming Computer</h4>
+        <div className="flex flex-col py-40">
+            <h2 className="text-center">Check out what we have in stock!</h2>
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-6 my-6">
+                <div className="flex flex-col w-full sm:w-96 h-full my-6">
+                    <h4 className="text-center">Mid-Tier Gaming Computer</h4>
                     <Carousel
-                        className='my-6'
+                        className="my-6"
                         infiniteLoop={true}
                         autoFocus={true}
                         transitionTime={800}
@@ -71,29 +71,35 @@ const Inventory = () => {
                         <img src={Inventory6} alt="product" />
                     </Carousel>
                 </div>
-                <ul className='flex flex-col w-96 h-full py-6 text-amber-200 bg-gradient-to-tr from-stone-200 via-purple-200 to-purple-500 rounded-2xl'>
-                    <li className='text-stone-900 inventory-li'>{product.theme}</li>
-                    <li className='text-stone-900 inventory-li'>{product.cpu}</li>
-                    <li className='text-stone-900 inventory-li'>{product.gpu}</li>
-                    <li className='text-stone-900 inventory-li'>{product.ram}</li>
-                    <li className='text-stone-900 inventory-li'>{product.storage}</li>
-                    <li className='text-stone-900 inventory-li'>{product.cooling}</li>
-                    <li className='text-stone-900 inventory-li'>{product.motherboard}</li>
-                    <li className='text-stone-900 inventory-li'>{product.psu}</li>
-                    <li className='text-stone-900 inventory-li'>{product.case}</li>
-                    <li className='text-stone-900 inventory-li'>{product.accessories}</li>
-                    {errors.quantity ?
-                        <p className='red'>{errors.quantity.message}</p> :
-                        <p className='text-white-500 bg-gradient-to-tr from-stone-300 via-stone-500 to-stone-700 w-1/2 m-auto p-1 rounded-lg'>QTY: {product.quantity}</p>
-                    }
-                    <h6 className='my-5 text-stone-800 text-2xl'>${product.price} <button className='button bg-stone-600 text-white rounded-lg p-2 hover:bg-amber-400 hover:text-white' onClick={submitHandler}>Add to cart</button></h6>
+                <ul className="flex flex-col w-full sm:w-96 h-full py-6 text-white bg-gradient-to-tr from-stone-200 via-purple-200 to-purple-500 rounded-2xl">
+                    <li className="inventory-li">{product.theme}</li>
+                    <li className="inventory-li">{product.cpu}</li>
+                    <li className="inventory-li">{product.gpu}</li>
+                    <li className="inventory-li">{product.ram}</li>
+                    <li className="inventory-li">{product.storage}</li>
+                    <li className="inventory-li">{product.cooling}</li>
+                    <li className="inventory-li">{product.motherboard}</li>
+                    <li className="inventory-li">{product.psu}</li>
+                    <li className="inventory-li">{product.case}</li>
+                    <li className="inventory-li">{product.accessories}</li>
+                    {errors.quantity ? (
+                        <p className="text-red-500">{errors.quantity.message}</p>
+                    ) : (
+                        <p className="text-white bg-gradient-to-tr from-stone-300 via-stone-500 to-stone-700 w-1/2 m-auto p-1 rounded-lg text-center">
+                            QTY: {product.quantity}
+                        </p>
+                    )}
+                    <h6 className="my-5 text-center text-2xl text-black">${product.price}</h6>
+                    <button className="button bg-stone-600 text-white rounded-lg p-2 hover:bg-amber-400 hover:text-white mx-auto">
+                        Add to cart
+                    </button>
                 </ul>
             </div>
-            <div className='inventory-container-2'>
-                <div className='inventory-style-1 bg-amber-400 rounded-2xl p-3 text-stone-800'>
+            <div className="inventory-container-2">
+                <div className="inventory-style-1 bg-amber-400 rounded-2xl p-3 text-stone-800">
                     <h3>Disclosure</h3>
-                    <p className='inventory-disclosure-info'>All systems come with an inactive version of Windows 10</p>
-                    <p className='inventory-disclosure-info'>All systems come with Windows OS</p>
+                    <p className="inventory-disclosure-info">All systems come with an inactive version of Windows 10</p>
+                    <p className="inventory-disclosure-info">All systems come with Windows OS</p>
                     <p className='inventory-disclosure-info'>Systems come with a 15 day moneyback guarantee IF computer is fully returned with no signs of user damage such as liquclassName damage, cracked parts, or abuse.</p>
                 </div>
                 <div className='inventory-style-1 bg-purple-500 rounded-2xl p-3 text-stone-800'>

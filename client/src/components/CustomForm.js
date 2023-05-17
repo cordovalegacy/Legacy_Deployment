@@ -230,7 +230,7 @@ const CustomForm = ({ PriceData, options }) => {
                                             <option value="4000">$4000+</option>
                                         </select>
                                     </div>
-                                    <div className='flex flex-col w-2/5 gap-3 ml-10 px-10 py-4 '>
+                                    <div className='flex flex-col w-2/5 gap-3 ml-10 px-10 py-4 pie'>
                                         <label className='underline'>Average Build Cost %</label>
                                         <PieChart PriceData={PriceData} options={options} />
                                     </div>

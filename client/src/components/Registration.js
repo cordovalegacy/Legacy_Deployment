@@ -31,7 +31,8 @@ const Registration = () => {
         e.preventDefault()
         axios
             .post("http://localhost:8000/api/users/register", //posts to route and registers user upon success
-                newUser //req.body
+                newUser,
+                {withCredentials: true} //req.body
             )
             .then((res) => {
                 console.log("Registered User: ", res.data)
