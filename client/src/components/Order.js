@@ -38,8 +38,8 @@ const Order = () => {
     }, []);
 
     return (
-        <div className="checkout-container">
-            <div className="flex items-center border-b-2 mb-2">
+        <div className="checkout-container overflow-auto">
+            <div className="flex items-center border-b-2 mb-10 mt-20">
                 <h2 className="font-bold">Order Details</h2>
                 <img id="cart-gear" src={Gear} alt="gear" />
                 <div className="flex gap-6">

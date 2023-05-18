@@ -46,7 +46,7 @@ const Inventory = () => {
             });
     }
     return (
-        <div className="flex flex-col py-40">
+        <form className="flex flex-col py-40" onClick={submitHandler}>
             <h2 className="text-center">Check out what we have in stock!</h2>
             <div className="flex flex-col sm:flex-row justify-center items-center gap-6 my-6">
                 <div className="flex flex-col w-full sm:w-96 h-full my-6">
@@ -108,7 +108,7 @@ const Inventory = () => {
                     <p className='inventory-educate-info'>GPU (graphics processing unit) is like the brawn of the computer. These are important for tasks like high performance gaming, and vclassNameeo editing.</p>
                 </div>
             </div>
-        </div>
+        </form>
     )
 }
 
