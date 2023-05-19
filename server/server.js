@@ -1,6 +1,5 @@
 //in this order is ideal, dont move things around
 require('dotenv').config();
-const path = require('path');
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
@@ -17,7 +16,7 @@ app.use(express.urlencoded({extended:true}))
 //taking cors away will result in cors errors while attempting your axios calls
 //this security feature is built into the browser
 app.use(cors({
-    origin: "http://localhost:3000",
+    origin: true,
     credentials: true
 }))
 
